@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sal-flux
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.service.sal.port }}
+      targetPort: 8080
+  selector:
+    app: sal-flux
