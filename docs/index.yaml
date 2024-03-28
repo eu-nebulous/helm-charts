@@ -3,12 +3,23 @@ entries:
   ems-server:
   - apiVersion: v2
     appVersion: 7.0.0-SNAPSHOT
-    created: "2024-03-07T14:39:44.645033639+01:00"
+    created: "2024-03-28T16:39:58.166047453+01:00"
     description: EMS server Helm chart for Kubernetes
     digest: 78579e63e7e83360b6b5d4a3a9d17a6368712aa6fb5c21f4f6096f83784b6d93
     name: ems-server
     type: application
     urls:
-    - https://jmarchel7bulls.github.io/helm-charts/ems-server-0.1.0.tgz
+    - https://jmarchel7bulls.github.io/helm-charts/docs/ems-server-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-07T14:39:44.644424942+01:00"
+  nebulous-optimiser-solver:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2024-03-28T16:39:58.166359217+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 3f52dd6bddbbca5347a2b1be439956f40a5edef0d4f74f8e27bcae004fb6dcfa
+    name: nebulous-optimiser-solver
+    type: application
+    urls:
+    - https://jmarchel7bulls.github.io/helm-charts/docs/nebulous-optimiser-solver-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-03-28T16:39:58.157016761+01:00"
