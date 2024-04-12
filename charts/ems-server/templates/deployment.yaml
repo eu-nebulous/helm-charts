@@ -56,12 +56,6 @@ spec:
               containerPort: {{ .containerPort }}
               protocol: {{ .protocol }}
             {{- end }}
-          livenessProbe:
-            tcpSocket:
-              port: http
-          readinessProbe:
-            tcpSocket:
-              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
