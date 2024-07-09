@@ -9,7 +9,7 @@ entries:
     name: ems-server
     type: application
     urls:
-    - https://jmarchel7bulls.github.io/helm-charts/ems-server-0.1.0.tgz
+    - https://eu-nebulous.github.io/helm-charts/ems-server-0.1.0.tgz
     version: 0.1.0
   nebulous-optimiser-solver:
   - apiVersion: v2
@@ -20,6 +20,6 @@ entries:
     name: nebulous-optimiser-solver
     type: application
     urls:
-    - https://jmarchel7bulls.github.io/helm-charts/nebulous-optimiser-solver-0.1.0.tgz
+    - https://eu-nebulous.github.io/helm-charts/nebulous-optimiser-solver-0.1.0.tgz
     version: 0.1.0
 generated: "2024-06-04T10:50:16.494021+03:00"
