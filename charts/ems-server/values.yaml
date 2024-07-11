@@ -119,12 +119,12 @@ env:
   #
   # =====  Development and Debug settings  =====
   #
-  #- name: APPLICATION_ID
-  #  value: ""
-  #- name: METRIC_MODEL_URL
-  #  value: "https://gitlab.com/nebulous-project/tests-new/-/raw/master/ems-at-nebulous/models/nebulous/test2.yml"
-  #- name: EMS_PRELOAD_APP_MODEL
-  #  value: "test2.yml"
+  #  - name: APPLICATION_ID
+  #    value: ""
+  #  - name: METRIC_MODEL_URL
+  #    value: "https://gitlab.com/nebulous-project/tests-new/-/raw/master/ems-at-nebulous/models/nebulous/test2.yml"
+  #  - name: EMS_PRELOAD_APP_MODEL
+  #    value: "test2.yml"
 
   #
   # =====  EMS server configuration  =====
@@ -174,14 +174,14 @@ env:
   # =====  External Broker settings  =====
   - name: EXTERNAL_ENABLED
     value: 'true'
-  #- name: EXTERNAL_BROKER_ADDRESS
-  #  value: ''
-  #- name: EXTERNAL_BROKER_PORT
-  #  value: '5672'
-  #- name: EXTERNAL_BROKER_USERNAME
-  #  value: ''
-  #- name: EXTERNAL_BROKER_PASSWORD
-  #  value: ''
+  #  - name: EXTERNAL_BROKER_ADDRESS
+  #    value: ''
+  #  - name: EXTERNAL_BROKER_PORT
+  #    value: '5672'
+  #  - name: EXTERNAL_BROKER_USERNAME
+  #    value: ''
+  #  - name: EXTERNAL_BROKER_PASSWORD
+  #    value: ''
 
   # =====  Broker settings  =====
   - name: BROKERCEP_ADDITIONAL_BROKER_CREDENTIALS
@@ -206,8 +206,8 @@ env:
     value: "monitoring-configmap"
   - name: EMS_CLIENT_CONFIG_MAP_NAME
     value: "ems-client-configmap"
-  #- name: EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE
-  #  value: "/ems-client-daemonset.yaml"
+  #  - name: EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE
+  #    value: "/ems-client-daemonset.yaml"
   - name: EMS_CLIENT_DAEMONSET_NAME
     value: "ems-client-daemonset"
   - name: EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY
@@ -222,10 +222,10 @@ env:
   - name: EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
     value: 'aaa/111, bbb/222'
 #    value: "ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)"
-  #- name: EMS_CLIENT_BROKER_USERNAME    # It is appended to EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
-  #  value: "ccc"
-  #- name: EMS_CLIENT_BROKER_PASSWORD
-  #  value: "333"
+  #  - name: EMS_CLIENT_BROKER_USERNAME    # It is appended to EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
+  #    value: "ccc"
+  #  - name: EMS_CLIENT_BROKER_PASSWORD
+  #    value: "333"
   - name: EMS_CLIENT_KEYSTORE_SECRET
     value: ""
   - name: EMS_CLIENT_TRUSTSTORE_SECRET
