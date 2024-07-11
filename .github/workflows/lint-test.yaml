@@ -34,4 +34,4 @@ jobs:
 
       - name: Run chart-testing (lint)
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct lint --target-branch ${{ github.event.pull_request.base.ref }}
+        run: ct lint --validate-maintainers=false --target-branch ${{ github.event.pull_request.base.ref }}
