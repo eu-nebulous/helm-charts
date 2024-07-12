@@ -29,7 +29,7 @@ spec:
         - name: mariadb
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.mariadb.image.repository }}:{{ .Values.mariadb.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.mariadb.image.repository }}:{{ .Values.mariadb.image.tag }}"
           imagePullPolicy: {{ .Values.mariadb.image.pullPolicy }}
           resources:
             {{- toYaml .Values.mariadb.resources | nindent 12 }}
@@ -67,7 +67,7 @@ spec:
         - name: sal
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
