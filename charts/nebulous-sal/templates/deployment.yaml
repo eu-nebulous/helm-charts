@@ -1,0 +1,148 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nebulous-sal.fullname" . }}
+  labels:
+    {{- include "nebulous-sal.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "nebulous-sal.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "nebulous-sal.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: mariadb
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.mariadb.image.repository }}:{{ .Values.mariadb.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.mariadb.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.mariadb.resources | nindent 12 }}
+          ports:
+            - containerPort: 3306
+              name: mariadb
+              protocol: TCP
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "nebulous-sal.fullname" . }}-mariadb-credentials
+                  key: mysql-root-password
+            - name: MYSQL_DATABASE
+              value: proactive
+          args: ["--wait_timeout=31536000"]
+          livenessProbe:
+            exec:
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "mariadb-admin ping -h localhost --password=$MYSQL_ROOT_PASSWORD"
+            failureThreshold: 5
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            exec:
+              command:
+                - "/bin/sh"
+                - "-c"
+                - "mariadb-admin ping -h localhost --password=$MYSQL_ROOT_PASSWORD"
+            failureThreshold: 5
+            initialDelaySeconds: 30
+            periodSeconds: 30
+        - name: sal
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 9001
+              name: pda
+              protocol: TCP
+          env:
+            - name: MYSQL_DATABASE
+              value: proactive
+            - name: PROPERTIES_FILENAME
+              value: sal
+            - name: PWS_URL
+              value: {{ .Values.pws.url }}
+            - name: PWS_USERNAME
+              value: {{ .Values.pws.username }}
+            - name: PWS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "nebulous-sal.fullname" . }}-pws-credentials
+                  key: pws-user-password
+            - name: DB_USERNAME
+              value: "root"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "nebulous-sal.fullname" . }}-mariadb-credentials
+                  key: mysql-root-password
+            - name: DB_DRIVER_CLASSNAME
+              value: org.mariadb.jdbc.Driver
+            - name: DB_URL
+              value: jdbc:mariadb://127.0.0.1:3306/proactive
+            - name: DB_PLATFORM
+              value: org.hibernate.dialect.MariaDB53Dialect
+            - name: JPDA_ADDRESS
+              value: "9001"
+            - name: JPDA_TRANSPORT
+              value: dt_socket
+          volumeMounts:
+            - name: script-volume
+              mountPath: /usr/local/tomcat/scripts/
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 8080
+            failureThreshold: 5
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - nc -z localhost 8080
+            failureThreshold: 5
+            initialDelaySeconds: 60
+            periodSeconds: 10
+      volumes:
+        - name: script-volume
+          configMap:
+            name: {{ .Values.scriptsConfigMap }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

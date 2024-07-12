@@ -1,0 +1,52 @@
+replicaCount: 1
+
+image:
+  repository: activeeon/sal
+  pullPolicy: IfNotPresent
+  tag: "dev"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+  pdaPort: 9001
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+mariadb:
+  rootPassword: YWN0aXZlZW9u
+  image:
+    repository: mariadb
+    pullPolicy: IfNotPresent
+    tag: ""
+  securityContext: {}
+  resources: {}
+
+# SAL config
+pws:
+  url: ""
+  username: ""
+  password: ""
+scriptsConfigMap: scripts-configmap
