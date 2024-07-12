@@ -40,7 +40,7 @@ mariadb:
   image:
     repository: mariadb
     pullPolicy: IfNotPresent
-    tag: ""
+    tag: "latest"
   securityContext: {}
   resources: {}
 
