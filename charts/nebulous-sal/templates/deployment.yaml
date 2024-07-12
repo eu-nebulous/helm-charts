@@ -99,6 +99,10 @@ spec:
                 secretKeyRef:
                   name: {{ include "nebulous-sal.fullname" . }}-mariadb-credentials
                   key: mysql-root-password
+            - name: DB_HOSTNAME
+              value: localhost
+            - name: DB_PORT
+              value: "3306"
             - name: DB_DRIVER_CLASSNAME
               value: org.mariadb.jdbc.Driver
             - name: DB_URL
