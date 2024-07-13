@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nebulous-activemq.fullname" . }}
+  labels:
+    {{- include "nebulous-activemq.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.guiPort }}
+      targetPort: gui
+      protocol: TCP
+      name: gui
+    - port: {{ .Values.service.activemqPort }}
+      targetPort: activemq
+      protocol: TCP
+      name: activemq
+    - port: {{ .Values.service.amqpPort }}
+      targetPort: amqp
+      protocol: TCP
+      name: amqp
+  selector:
+    {{- include "nebulous-activemq.selectorLabels" . | nindent 4 }}
