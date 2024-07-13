@@ -124,7 +124,7 @@ env:
   - name: BUILD_MESSAGE
     value: '2024-05-09 11:57:00+03:00 opendev'
   - name: JASYPT_PASSWORD
-    value: 'password'                           #+++++++++++++++++++++++++ ?????????????????
+    value: 'password'                           # +++++++++++++++++++++++++ ?????????????????
   - name: NET_UTIL_ADDRESS_DISCOVERY_SERVICES
     value: '-'
   - name: EMS_IP_SETTING
@@ -152,16 +152,16 @@ env:
   - name: CONTROL_SSL_KEY_ENTRY_GENERATE
     value: 'ALWAYS'
   - name: CONTROL_SSL_KEYSTORE_PASSWORD
-    value: 'melodic'          #+++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
+    value: 'melodic'          # +++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
   - name: CONTROL_SSL_TRUSTSTORE_PASSWORD
-    value: 'melodic'          #+++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
+    value: 'melodic'          # +++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
 
   - name: JWT_SECRET
-    value: 'ENC(I0mRWgH2FVDDNs4OBcdh7Z+o3lOQDa3ztaEtmnXT2HN0aClkChp/lqm9zM5HyTk0stJ7v2Di75U=)'  #+++++++++++++++++++++++++ ${P_JWT_SECRET}
+    value: 'ENC(I0mRWgH2FVDDNs4OBcdh7Z+o3lOQDa3ztaEtmnXT2HN0aClkChp/lqm9zM5HyTk0stJ7v2Di75U=)'  # +++++++++++++++++++++++++ ${P_JWT_SECRET}
   - name: WEB_SECURITY_API_KEY_AUTHENTICATION_VALUE
-    value: '1234567890'                                               #+++++++++++++++++++++++++ ${P_WEB_API_KEY_VALUE}
+    value: '1234567890'                                               # +++++++++++++++++++++++++ ${P_WEB_API_KEY_VALUE}
   - name: WEB_SECURITY_FORM_AUTHENTICATION_PASSWORD
-    value: 'ems'                                                      #+++++++++++++++++++++++++ ${P_WEB_ADMIN_PASSWORD}
+    value: 'ems'                                                      # +++++++++++++++++++++++++ ${P_WEB_ADMIN_PASSWORD}
 
   # =====  Topic Beacon settings  =====
   - name: BEACON_INITIAL_DELAY
@@ -256,8 +256,8 @@ env:
     value: "monitoring-configmap"
   - name: EMS_CLIENT_CONFIG_MAP_NAME
     value: "ems-client-configmap"
-  #- name: EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE
-  #  value: "/ems-client-daemonset.yaml"
+  #  - name: EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE
+  #    value: "/ems-client-daemonset.yaml"
   - name: EMS_CLIENT_DAEMONSET_NAME
     value: "ems-client-daemonset"
   - name: EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY
@@ -271,10 +271,10 @@ env:
   - name: EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
     value: 'aaa/111, bbb/222'
 #    value: "ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)"
-  #- name: EMS_CLIENT_BROKER_USERNAME    # It is appended to EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
-  #  value: "ccc"
-  #- name: EMS_CLIENT_BROKER_PASSWORD
-  #  value: "333"
+  #  - name: EMS_CLIENT_BROKER_USERNAME    # It is appended to EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
+  #    value: "ccc"
+  #  - name: EMS_CLIENT_BROKER_PASSWORD
+  #    value: "333"
   - name: EMS_CLIENT_KEYSTORE_SECRET
     value: ""
   - name: EMS_CLIENT_TRUSTSTORE_SECRET

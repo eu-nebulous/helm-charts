@@ -16,7 +16,7 @@ fullnameOverride: ""
 
 # InfluxDB specific configurations
 config:
-  httpAuthEnabled: "true" # Set true or false
+  httpAuthEnabled: "true"
   adminUser: "admin"
 
 # Service Account configurations

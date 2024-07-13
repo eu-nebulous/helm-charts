@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  guiPort: 8161 
+  guiPort: 8161
   activemqPort: 61616
   amqpPort: 5672
 
