@@ -96,8 +96,3 @@ env:
     value: "nebulous"
   - name: APOS_MONGODB_URI
     value: "mongodb://username:password@nebulous-gui-controller-mongodb:27017/admin"
-
-apostropheCMS:
-  user:
-    name: admin
-    password: admin
