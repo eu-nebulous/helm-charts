@@ -25,6 +25,21 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: sal-scripts
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.scripts.image.repository }}:{{ .Values.scripts.image.tag }}"
+          imagePullPolicy: {{ .Values.scripts.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          command:
+            - /bin/sh
+            - -c
+            - cp -a /sal-scripts/{{ .Values.scripts.sourceDir }}/* /mnt/sal-scripts/
+          volumeMounts:
+            - name: script-volume
+              mountPath: /mnt/sal-scripts
       containers:
         - name: mariadb
           securityContext:
@@ -136,8 +151,7 @@ spec:
             periodSeconds: 10
       volumes:
         - name: script-volume
-          configMap:
-            name: {{ .Values.scriptsConfigMap }}
+          emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
