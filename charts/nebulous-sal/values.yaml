@@ -44,9 +44,15 @@ mariadb:
   securityContext: {}
   resources: {}
 
+scripts:
+  sourceDir: installation-scripts-onm
+  image:
+    repository: quay.io/nebulous/sal-scripts
+    pullPolicy: IfNotPresent
+    tag: "main"
+
 # SAL config
 pws:
   url: ""
   username: ""
   password: ""
-scriptsConfigMap: scripts-configmap
