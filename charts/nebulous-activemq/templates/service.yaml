@@ -8,14 +8,23 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.guiPort }}
+      {{ with .Values.service.guiNodePort }}
+      nodePort: {{ . }}
+      {{ end }}
       targetPort: gui
       protocol: TCP
       name: gui
     - port: {{ .Values.service.activemqPort }}
+      {{ with .Values.service.activemqNodePort }}
+      nodePort: {{ . }}
+      {{ end }}
       targetPort: activemq
       protocol: TCP
       name: activemq
     - port: {{ .Values.service.amqpPort }}
+      {{ with .Values.service.amqpNodePort }}
+      nodePort: {{ . }}
+      {{ end }}
       targetPort: amqp
       protocol: TCP
       name: amqp
