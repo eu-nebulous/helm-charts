@@ -132,20 +132,14 @@ spec:
             - name: script-volume
               mountPath: /usr/local/tomcat/scripts/
           livenessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - nc -z localhost 8080
+            tcpSocket:
+              port: 8080
             failureThreshold: 5
             initialDelaySeconds: 60
             periodSeconds: 30
           readinessProbe:
-            exec:
-              command:
-                - /bin/sh
-                - -c
-                - nc -z localhost 8080
+            tcpSocket:
+              port: 8080
             failureThreshold: 5
             initialDelaySeconds: 60
             periodSeconds: 10
