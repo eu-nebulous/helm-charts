@@ -132,14 +132,20 @@ spec:
             - name: script-volume
               mountPath: /usr/local/tomcat/scripts/
           livenessProbe:
-            tcpSocket:
-              port: 8080
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - curl -X POST localhost:8080/sal/pagateway/connect
             failureThreshold: 5
             initialDelaySeconds: 60
             periodSeconds: 30
           readinessProbe:
-            tcpSocket:
-              port: 8080
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - curl -X POST localhost:8080/sal/pagateway/connect
             failureThreshold: 5
             initialDelaySeconds: 60
             periodSeconds: 10
