@@ -136,7 +136,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - curl -X POST localhost:8080/sal/pagateway/connect
+                - curl -fsS -o /dev/null -X POST localhost:8080/sal/pagateway/connect
             failureThreshold: 5
             initialDelaySeconds: 60
             periodSeconds: 30
@@ -145,7 +145,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - curl -X POST localhost:8080/sal/pagateway/connect
+                - curl -fsS -o /dev/null -X POST localhost:8080/sal/pagateway/connect
             failureThreshold: 5
             initialDelaySeconds: 60
             periodSeconds: 10
