@@ -82,5 +82,15 @@ tolerations: []
 affinity: {}
 
 env:
-  SAL_USER: nebulous
-  SAL_PASSWORD: nebulous
+  - name: SAL_USER
+    value: "nebulous"
+  - name: SAL_PASSWORD
+    value: "nebulous"
+  - name: SAL_HOST
+    value: "nebulous-sal"
+  - name: SAL_PORT
+    value: "8080"
+  - name: ACTIVEMQ_HOST
+    value: "nebulous-activemq"
+  - name: ACTIVEMQ_PORT
+    value: "5672"
