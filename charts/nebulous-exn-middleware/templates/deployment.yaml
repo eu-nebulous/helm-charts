@@ -49,9 +49,9 @@ spec:
             - name: 'ACTIVEMQ_PORT'
               value: {{ .Values.ACTIVEMQ_PORT | default "5672" | quote }}
             - name: 'SAL_USER'
-              value: {{ .Values.env.SAL_USER | default "nebulous" }}
+              value: {{ .Values.env.SAL_USER | default "nebulous" | quote }}
             - name: 'SAL_PASSWORD'
-              value: {{ .Values.env.SAL_PASSWORD | default "nebulous" }}
+              value: {{ .Values.env.SAL_PASSWORD | default "nebulous" | quote }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
