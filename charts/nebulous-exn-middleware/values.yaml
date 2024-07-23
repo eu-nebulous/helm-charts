@@ -82,5 +82,5 @@ tolerations: []
 affinity: {}
 
 env:
-  SAL_USER: ""
-  SAL_PASSWORD: ""
+  SAL_USER: nebulous
+  SAL_PASSWORD: nebulous
