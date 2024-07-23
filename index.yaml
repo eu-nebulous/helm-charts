@@ -46,6 +46,16 @@ entries:
   nebulous-exn-middleware:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-07-23T10:16:22.704170656Z"
+    description: A Helm chart for Kubernetes
+    digest: ae1eb0e9270eac20142dd66fca84e498357ebf7d20aa9848a164eaf879f9d1bb
+    name: nebulous-exn-middleware
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-exn-middleware-0.1.2/nebulous-exn-middleware-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-07-23T09:55:44.080521319Z"
     description: A Helm chart for Kubernetes
     digest: fc2b53b7d47e3f8a3cfb1729b90852f6368c69b5fefab9be5530a5a03419aac4
@@ -298,4 +308,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-23T09:55:44.080574829Z"
+generated: "2024-07-23T10:16:22.704205121Z"
