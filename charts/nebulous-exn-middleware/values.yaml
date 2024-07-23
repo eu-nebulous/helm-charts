@@ -80,3 +80,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:
+  SAL_USER: ""
+  SAL_PASSWORD: ""
