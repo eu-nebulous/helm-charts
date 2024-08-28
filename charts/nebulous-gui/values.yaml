@@ -4,11 +4,6 @@
 
 replicaCount: 1
 
-serverImage:
-  repository: "docker.io/library/nginx"
-  pullPolicy: IfNotPresent
-  tag: "latest"
-
 builderImage:
   repository: "quay.io/nebulous/gui-builder"
   pullPolicy: IfNotPresent
@@ -87,5 +82,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-env: []
