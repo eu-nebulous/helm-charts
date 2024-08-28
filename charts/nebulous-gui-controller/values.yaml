@@ -85,6 +85,14 @@ mongodb:
   # this enables the built-in mongodb deployment - not recommended for production
   enabled: true
 
+waitForMongodb:
+  image:
+    repository: "busybox"
+    pullPolicy: IfNotPresent
+    tag: "1-musl"
+  resources: {}
+  securityContext: {}
+
 env:
   - name: ACTIVEMQ_HOST
     value: "nebulous-activemq"

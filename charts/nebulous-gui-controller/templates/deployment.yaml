@@ -29,8 +29,13 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: wait-for-mongodb
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.waitForMongodb.image.repository }}:{{ .Values.waitForMongodb.image.tag }}"
+          imagePullPolicy: {{ .Values.waitForMongodb.image.pullPolicy }}
           command: ['sh', '-c', 'until nc -z nebulous-gui-controller-mongodb 27017; do echo waiting for mongodb; sleep 2; done;']
+          resources:
+            {{- toYaml .Values.waitForMongodb.resources | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.waitForMongodb.securityContext | nindent 12 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
