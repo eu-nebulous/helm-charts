@@ -198,6 +198,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-influxdb-0.1.0/nebulous-influxdb-0.1.0.tgz
     version: 0.1.0
+  nebulous-lstm-predictor:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2024-09-11T07:17:03.337229573Z"
+    description: A Helm chart for Kubernetes
+    digest: 1de413fcfa734a4c292af2f83b2506108cc387ec51a85e42886019acf7b147b9
+    name: nebulous-lstm-predictor
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-lstm-predictor-0.1.0/nebulous-lstm-predictor-0.1.0.tgz
+    version: 0.1.0
   nebulous-monitoring:
   - apiVersion: v2
     appVersion: latest
@@ -368,4 +379,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-08-28T08:54:07.747386232Z"
+generated: "2024-09-11T07:17:03.337279336Z"
