@@ -96,3 +96,7 @@ env:
     value: '111'
   - name: DISCOVERY_BROKERURL
     value: 'tcp://nebulous-monitoring:61616?daemon=true&trace=false&useInactivityMonitor=false&connectionTimeout=0&keepAlive=true'
+  - name: DISCOVERY_API_KEY_AUTHENTICATION_ENABLED
+    value: 'true'
+  - name: DISCOVERY_API_KEY_VALUE
+    value: '1234567890'
