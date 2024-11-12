@@ -26,8 +26,6 @@ spec:
               value: username
             - name: MONGO_INITDB_ROOT_PASSWORD
               value: password
-            - name: MONGO_INITDB_DATABASE
-              value: nebulous
           volumeMounts:
             - name: mongodb-data
               mountPath: /data/db
