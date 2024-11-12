@@ -149,6 +149,16 @@ entries:
   nebulous-gui-controller:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-11-12T15:16:58.559874285Z"
+    description: A Helm chart for Kubernetes
+    digest: e6747f3e7d6d579f68c7dc6b23bc7d5eea56d18473981eea03ee1b26fb6d5e17
+    name: nebulous-gui-controller
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-gui-controller-0.4.0/nebulous-gui-controller-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-08-28T08:23:13.839035924Z"
     description: A Helm chart for Kubernetes
     digest: bb3fd0ca400bad63cb6b09980c304d51e6fa694eb0f556d3052c681d4cba21c4
@@ -389,4 +399,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-08T12:01:18.923951509Z"
+generated: "2024-11-12T15:16:58.559979591Z"
