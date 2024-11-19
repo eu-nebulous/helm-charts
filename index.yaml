@@ -125,6 +125,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-exponential-smoothing-predictor-0.1.0/nebulous-exponential-smoothing-predictor-0.1.0.tgz
     version: 0.1.0
+  nebulous-forecast-ensembler:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2024-11-19T15:15:14.788386791Z"
+    description: A Helm chart for Kubernetes
+    digest: 32a4f5c64bef7f3866a31a24a38326bb84f5d32dc54575f56a764c5b0b431178
+    name: nebulous-forecast-ensembler
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-forecast-ensembler-0.1.0/nebulous-forecast-ensembler-0.1.0.tgz
+    version: 0.1.0
   nebulous-gui:
   - apiVersion: v2
     appVersion: latest
@@ -399,4 +410,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-12T15:16:58.559979591Z"
+generated: "2024-11-19T15:15:14.788451442Z"
