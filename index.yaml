@@ -310,6 +310,16 @@ entries:
   nebulous-resource-manager:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-11-20T08:49:49.305071758Z"
+    description: A Helm chart for Kubernetes
+    digest: 8fbe1b18ffcac0fe6ca20d63388802a2776377f2410b02eafc066ce39bbd8930
+    name: nebulous-resource-manager
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-resource-manager-0.2.0/nebulous-resource-manager-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-10-08T12:01:18.923898941Z"
     description: A Helm chart for Kubernetes
     digest: 92e65b40fe495dd404fed843a60719c2702963a8cc1deb501ac7f74b6b4e56c6
@@ -410,4 +420,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-19T15:15:14.788451442Z"
+generated: "2024-11-20T08:49:49.305123925Z"
