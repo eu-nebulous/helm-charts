@@ -34,9 +34,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- range .Values.env }}
-            - name: {{ .name }}
-              value: {{ .value | quote }}
+            {{- range $key, $val := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
             {{- end }}
           ports:
             - name: http
@@ -58,9 +58,9 @@ spec:
           image: "docker.io/library/mongo:4.4.29"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- range .Values.env }}
-            - name: {{ .name }}
-              value: {{ .value | quote }}
+            {{- range $key, $val := .Values.mongodb.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
             {{- end }}
           ports:
             - name: mongo-port

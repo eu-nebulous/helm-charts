@@ -81,22 +81,18 @@ tolerations: []
 
 affinity: {}
 
+mongodb:
+  env:
+    MONGO_INITDB_ROOT_USERNAME: "root"
+    MONGO_INITDB_ROOT_PASSWORD: "example"
+
 env:
-  # =====  MongoDB configuration  =====
-  - name: MONGO_INITDB_ROOT_USERNAME
-    value: 'root'
-  - name: MONGO_INITDB_ROOT_PASSWORD
-    value: 'example'
-  # =====  Resource Manager configuration  =====
-  - name: SPRING_DATA_MONGODB_URI
-    value: 'mongodb://root:example@localhost:27017/admin'
-  - name: DISCOVERY_BROKER_USERNAME
-    value: 'aaa'
-  - name: DISCOVERY_BROKER_PASSWORD
-    value: '111'
-  - name: DISCOVERY_BROKERURL
-    value: 'tcp://nebulous-monitoring:61616?daemon=true&trace=false&useInactivityMonitor=false&connectionTimeout=0&keepAlive=true'
-  - name: DISCOVERY_API_KEY_AUTHENTICATION_ENABLED
-    value: 'true'
-  - name: DISCOVERY_API_KEY_VALUE
-    value: '1234567890'
+  SPRING_DATA_MONGODB_URI: "mongodb://root:example@localhost:27017/admin"
+  DISCOVERY_BROKER_USERNAME: "aaa"
+  DISCOVERY_BROKER_PASSWORD: "111"
+  DISCOVERY_BROKERURL: "tcp://nebulous-monitoring:61616?daemon=true&trace=false&useInactivityMonitor=false&connectionTimeout=0&keepAlive=true"
+  DISCOVERY_API_KEY_AUTHENTICATION_ENABLED: "true"
+  DISCOVERY_API_KEY_VALUE: "1234567890"
+  RM_ADMIN_PASSWD: "admin"
+  RM_USER_PASSWD: "user"
+  NEBULOUS_SERVER_IP_ADDRESS: "127.0.0.1"
