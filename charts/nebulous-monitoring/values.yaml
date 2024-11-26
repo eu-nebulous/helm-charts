@@ -121,161 +121,99 @@ env:
   # =====  EMS server configuration  =====
   #
   # ===== INITIALIZATION settings =====
-  - name: BUILD_MESSAGE
-    value: '2024-05-09 11:57:00+03:00 opendev'
-  - name: JASYPT_PASSWORD
-    value: 'password'                           # +++++++++++++++++++++++++ ?????????????????
-  - name: NET_UTIL_ADDRESS_DISCOVERY_SERVICES
-    value: '-'
-  - name: EMS_IP_SETTING
-    value: 'DEFAULT_IP'
+  BUILD_MESSAGE: "2024-05-09 11:57:00+03:00 opendev"
+  JASYPT_PASSWORD: "password"                           # +++++++++++++++++++++++++ ?????????????????
+  NET_UTIL_ADDRESS_DISCOVERY_SERVICES: "-"
+  EMS_IP_SETTING: "DEFAULT_IP"
 
-  - name: EMS_LOG_REQUESTS
-    value: 'false'
-  - name: EMS_PRELOAD_APP_MODEL
-    value: 'empty.yml'
-  - name: EMS_PRELOAD_CP_MODEL
-    value: ''
+  EMS_LOG_REQUESTS: "false"
+  EMS_PRELOAD_APP_MODEL: "empty.yml"
+  EMS_PRELOAD_CP_MODEL: ""
 
-  - name: CONTROL_SKIP_MVV_RETRIEVE
-    value: 'true'
-  - name: CONTROL_SKIP_METASOLVER
-    value: 'true'
-  - name: CONTROL_SKIP_NOTIFICATION
-    value: 'true'
-  - name: CONTROL_EXIT_ALLOWED
-    value: 'true'
-  - name: RESTART_EXIT_CODE
-    value: '99'
+  CONTROL_SKIP_MVV_RETRIEVE: "true"
+  CONTROL_SKIP_METASOLVER: "true"
+  CONTROL_SKIP_NOTIFICATION: "true"
+  CONTROL_EXIT_ALLOWED: "true"
+  RESTART_EXIT_CODE: "99"
 
   # =====  Security and Authentication settings  =====
-  - name: CONTROL_SSL_KEY_ENTRY_GENERATE
-    value: 'ALWAYS'
-  - name: CONTROL_SSL_KEYSTORE_PASSWORD
-    value: 'melodic'          # +++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
-  - name: CONTROL_SSL_TRUSTSTORE_PASSWORD
-    value: 'melodic'          # +++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
+  CONTROL_SSL_KEY_ENTRY_GENERATE: "ALWAYS"
+  CONTROL_SSL_KEYSTORE_PASSWORD: "melodic"          # +++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
+  CONTROL_SSL_TRUSTSTORE_PASSWORD: "melodic"          # +++++++++++++++++++++++++ ${P_KEYSTORE_PASSWORD}
 
-  - name: JWT_SECRET
-    value: 'ENC(I0mRWgH2FVDDNs4OBcdh7Z+o3lOQDa3ztaEtmnXT2HN0aClkChp/lqm9zM5HyTk0stJ7v2Di75U=)'  # +++++++++++++++++++++++++ ${P_JWT_SECRET}
-  - name: WEB_SECURITY_API_KEY_AUTHENTICATION_VALUE
-    value: '1234567890'                                               # +++++++++++++++++++++++++ ${P_WEB_API_KEY_VALUE}
-  - name: WEB_SECURITY_FORM_AUTHENTICATION_PASSWORD
-    value: 'ems'                                                      # +++++++++++++++++++++++++ ${P_WEB_ADMIN_PASSWORD}
+  JWT_SECRET: "ENC(I0mRWgH2FVDDNs4OBcdh7Z+o3lOQDa3ztaEtmnXT2HN0aClkChp/lqm9zM5HyTk0stJ7v2Di75U=)"  # +++++++++++++++++++++++++ ${P_JWT_SECRET}
+  WEB_SECURITY_API_KEY_AUTHENTICATION_VALUE: "1234567890"                                               # +++++++++++++++++++++++++ ${P_WEB_API_KEY_VALUE}
+  WEB_SECURITY_FORM_AUTHENTICATION_PASSWORD: "ems"                                                      # +++++++++++++++++++++++++ ${P_WEB_ADMIN_PASSWORD}
 
   # =====  Topic Beacon settings  =====
-  - name: BEACON_INITIAL_DELAY
-    value: '10000'
-  - name: BEACON_DELAY
-    value: '10000'
+  BEACON_INITIAL_DELAY: "10000"
+  BEACON_DELAY: "10000"
 
   # ===== EMS server monitoring settings =====
-  - name: EMS_SYSMON_ENABLED
-    value: 'true'
-  - name: EMS_SYSMON_PERIOD
-    value: '1000'
-  - name: EMS_SYSMON_COMMAND
-    value: './bin/sysmon.sh'
+  EMS_SYSMON_ENABLED: "true"
+  EMS_SYSMON_PERIOD: "1000"
+  EMS_SYSMON_COMMAND: "./bin/sysmon.sh"
 
-  - name: INFO_FILES_ROOTS
-    value: '/logs, /config, /opt/ems-server/public_resources/resources'
-  - name: INFO_FILES_EXTENSIONS_BLOCKED
-    value: '.pem, .p12, .sh'
+  INFO_FILES_ROOTS: "/logs, /config, /opt/ems-server/public_resources/resources"
+  INFO_FILES_EXTENSIONS_BLOCKED: ".pem, .p12, .sh"
 
   # =====  EMS Boot (server) settings  =====
-  - name: BOOT_ENABLED
-    value: 'true'
+  BOOT_ENABLED: "true"
 
   # =====  EMS Boot Initializer (client) settings  =====
-  - name: BOOT_INITIALIZER_ENABLED
-    value: 'false'
+  BOOT_INITIALIZER_ENABLED: "false"
 
   # =====  EMS-Nebulous K8S service settings  =====
-  - name: K8S_DEPLOY_EMS_CLIENTS_ON_KUBERNETES_ENABLED
-    value: 'false'
-  - name: K8S_ENABLED
-    value: 'false'
-  - name: K8S_WATCHER_ENABLED
-    value: 'false'
+  K8S_DEPLOY_EMS_CLIENTS_ON_KUBERNETES_ENABLED: "false"
+  K8S_ENABLED: "false"
+  K8S_WATCHER_ENABLED: "false"
 
   # =====  External Broker settings  =====
-  - name: EXTERNAL_ENABLED
-    value: 'true'
-  - name: EXTERNAL_BROKER_ADDRESS
-    value: 'nebulous-activemq'
-  - name: EXTERNAL_BROKER_PORT
-    value: '5672'
-  - name: EXTERNAL_BROKER_USERNAME
-    value: 'nebulous'
-  - name: EXTERNAL_BROKER_PASSWORD
-    value: 'admin'
+  EXTERNAL_ENABLED: "true"
+  EXTERNAL_BROKER_ADDRESS: "nebulous-activemq"
+  EXTERNAL_BROKER_PORT: "5672"
+  EXTERNAL_BROKER_USERNAME: "nebulous"
+  EXTERNAL_BROKER_PASSWORD: "admin"
 
-  - name: EXTERNAL_CONNECTION_INFO_COLLECTION_MODE
-    value: 'CONFIG'
-  - name: EXTERNAL_BROKER_SERVICE_NAME
-    value: 'nebulous-activemq'
-  - name: EXTERNAL_BROKER_SERVICE_NAMESPACE
-    value: 'nebulous-cd'
+  EXTERNAL_CONNECTION_INFO_COLLECTION_MODE: "CONFIG"
+  EXTERNAL_BROKER_SERVICE_NAME: "nebulous-activemq"
+  EXTERNAL_BROKER_SERVICE_NAMESPACE: "nebulous-cd"
 
   # =====  Broker settings  =====
-  - name: EMS_SERVER_BROKER_PORT
-    value: '31617'
-  - name: BROKERCEP_ADDITIONAL_BROKER_CREDENTIALS
-    value: 'aaa/111, bbb/222'                                           # ++++++++++++++++ ${P_BROKERCEP_CREDENTIALS:-}
-#    value: 'ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)'
-  - name: BROKERCEP_EVENT_RECORDER_ENABLED
-    value: 'false'
-  - name: BROKERCEP_EVENT_RECORDER_FILTER_MODE
-    value: 'ALL'
+  EMS_SERVER_BROKER_PORT: "31617"
+  BROKERCEP_ADDITIONAL_BROKER_CREDENTIALS: "aaa/111, bbb/222"                                           # ++++++++++++++++ ${P_BROKERCEP_CREDENTIALS:-}
+  # BROKERCEP_ADDITIONAL_BROKER_CREDENTIALS: "ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)"
+  BROKERCEP_EVENT_RECORDER_ENABLED: "false"
+  BROKERCEP_EVENT_RECORDER_FILTER_MODE: "ALL"
 
   # =====  Baguette Server settings  =====
-  - name: BAGUETTE_SERVER_CREDENTIALS
-    value: '{ "aa":"xx" }'                                              # ++++++++++++++++ ${P_BAGUETTE_SERVER_CREDENTIALS:-{}
-#    value: 'ENC(y46CiW6przlpXvz8ToE+T1Sn6uGfO2haP7OhATB0SXo=)'
+  BAGUETTE_SERVER_CREDENTIALS: '{ "aa":"xx" }'                                              # ++++++++++++++++ ${P_BAGUETTE_SERVER_CREDENTIALS:-{}}
+  # BAGUETTE_SERVER_CREDENTIALS: "ENC(y46CiW6przlpXvz8ToE+T1Sn6uGfO2haP7OhATB0SXo=)"
 
   # =====  Baguette Client Install settings  =====
-  - name: EMS_SERVER_ADDRESS
-    value: '158.39.200.177'
-  - name: BAGUETTE_SERVER_ADDRESS
-    value: '158.39.200.177'
-  - name: BAGUETTE_SERVER_PORT
-    value: '32222'
-#  - name: BAGUETTE_CLIENT_INSTALL_INSTRUCTIONS_LINUX
-#    value: 'file:${EMS_CONFIG_DIR}/baguette-client-install/helm/app-detection.yml, file:${EMS_CONFIG_DIR}/baguette-client-install/helm/epm-deploy.yml, file:${EMS_CONFIG_DIR}/baguette-client-install/helm/netdata-deploy.yml'
-  - name: BAGUETTE_CLIENT_INSTALL_INSTALLATION_CONTEXT_PROCESSOR_PLUGINS
-    value: 'eu.nebulous.ems.plugins.NebulousInstallationContextProcessorPlugin'
+  EMS_SERVER_ADDRESS: "158.39.200.177"
+  BAGUETTE_SERVER_ADDRESS: "158.39.200.177"
+  BAGUETTE_SERVER_PORT: "32222"
+  # BAGUETTE_CLIENT_INSTALL_INSTRUCTIONS_LINUX: "file:${EMS_CONFIG_DIR}/baguette-client-install/helm/app-detection.yml, file:${EMS_CONFIG_DIR}/baguette-client-install/helm/epm-deploy.yml, file:${EMS_CONFIG_DIR}/baguette-client-install/helm/netdata-deploy.yml"
+  BAGUETTE_CLIENT_INSTALL_INSTALLATION_CONTEXT_PROCESSOR_PLUGINS: "eu.nebulous.ems.plugins.NebulousInstallationContextProcessorPlugin"
 
   #
   # =====  EMS server K8sClientInstaller configuration  =====
   #
-  - name: EMS_CLIENT_DEPLOYMENT_DRY_RUN
-    value: "false"
-  - name: K8S_SERVICE_ACCOUNT_SECRETS_PATH
-    value: "/var/run/secrets/kubernetes.io/serviceaccount"
-  - name: APP_CONFIG_MAP_NAME
-    value: "monitoring-configmap"
-  - name: EMS_CLIENT_CONFIG_MAP_NAME
-    value: "ems-client-configmap"
-  #  - name: EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE
-  #    value: "/ems-client-daemonset.yaml"
-  - name: EMS_CLIENT_DAEMONSET_NAME
-    value: "ems-client-daemonset"
-  - name: EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY
-    value: "registry.gitlab.com/nebulous-project/ems-main/ems-client"
-  - name: EMS_CLIENT_DAEMONSET_IMAGE_TAG
-    value: "latest"
-  - name: EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY
-    value: "Always"
+  EMS_CLIENT_DEPLOYMENT_DRY_RUN: "false"
+  K8S_SERVICE_ACCOUNT_SECRETS_PATH: "/var/run/secrets/kubernetes.io/serviceaccount"
+  APP_CONFIG_MAP_NAME: "monitoring-configmap"
+  EMS_CLIENT_CONFIG_MAP_NAME: "ems-client-configmap"
+  # EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE: "/ems-client-daemonset.yaml"
+  EMS_CLIENT_DAEMONSET_NAME: "ems-client-daemonset"
+  EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY: "registry.gitlab.com/nebulous-project/ems-main/ems-client"
+  EMS_CLIENT_DAEMONSET_IMAGE_TAG: "latest"
+  EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY: "Always"
 
   # =====  EMS clients - Security and Authentication settings  =====
-  - name: EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
-    value: 'aaa/111, bbb/222'
-#    value: "ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)"
-  #  - name: EMS_CLIENT_BROKER_USERNAME    # It is appended to EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
-  #    value: "ccc"
-  #  - name: EMS_CLIENT_BROKER_PASSWORD
-  #    value: "333"
-  - name: EMS_CLIENT_KEYSTORE_SECRET
-    value: ""
-  - name: EMS_CLIENT_TRUSTSTORE_SECRET
-    value: ""
+  EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS: "aaa/111, bbb/222"
+  # EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS: "ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)"
+  # EMS_CLIENT_BROKER_USERNAME: "ccc"    # It is appended to EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
+  # EMS_CLIENT_BROKER_PASSWORD: "333"
+  EMS_CLIENT_KEYSTORE_SECRET: ""
+  EMS_CLIENT_TRUSTSTORE_SECRET: ""
