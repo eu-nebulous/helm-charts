@@ -40,8 +40,11 @@ spec:
           livenessProbe:
             exec:
               command:
-                - ls
-                - /home
+                - /bin/sh
+                - -c
+                - stat /home/r_predictions/is_alive.txt && rm /home/r_predictions/is_alive.txt
+            initialDelaySeconds: 60
+            periodSeconds: 10        
           readinessProbe:
             exec:
               command:
