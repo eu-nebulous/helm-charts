@@ -117,6 +117,16 @@ entries:
   nebulous-exponential-smoothing-predictor:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-11-29T10:43:22.037144053Z"
+    description: A Helm chart for Kubernetes
+    digest: 21c536873bf64f6273e1224480d9410028a8a60bf65d500cf347a69b17c37550
+    name: nebulous-exponential-smoothing-predictor
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-exponential-smoothing-predictor-0.1.2/nebulous-exponential-smoothing-predictor-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-11-28T14:43:52.192376499Z"
     description: A Helm chart for Kubernetes
     digest: 4475214f4528baa98c3f97d67f4955d1ed28fac10069a8be85fa552b2e437b7f
@@ -440,4 +450,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-28T14:43:52.192434969Z"
+generated: "2024-11-29T10:43:22.037202272Z"
