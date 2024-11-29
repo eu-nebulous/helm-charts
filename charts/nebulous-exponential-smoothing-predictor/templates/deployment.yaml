@@ -43,13 +43,13 @@ spec:
                 - /bin/sh
                 - -c
                 - stat /home/r_predictions/is_alive.txt && rm /home/r_predictions/is_alive.txt
-            initialDelaySeconds: 60
-            periodSeconds: 10        
+            initialDelaySeconds: 300
+            periodSeconds: 60 
           readinessProbe:
             exec:
               command:
-                - ls
-                - /home
+                - stat
+                - /home/r_predictions/is_alive.txt
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
