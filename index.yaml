@@ -221,6 +221,16 @@ entries:
   nebulous-influxdb:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-12-03T14:52:55.925753534Z"
+    description: A Helm chart for Kubernetes
+    digest: 293eb3805e601f6333eef92e8b23b3ed506281adab188cb9b18a9641547e71c8
+    name: nebulous-influxdb
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-influxdb-0.1.2/nebulous-influxdb-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-07-19T07:09:38.843348847Z"
     description: A Helm chart for Kubernetes
     digest: 770dbe7d1ffbbebd6ec8f70ca40cb86df38d879c805b49b15b0e9e4428e05d0b
@@ -450,4 +460,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-29T10:43:22.037202272Z"
+generated: "2024-12-03T14:52:55.92583247Z"
