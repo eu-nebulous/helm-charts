@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configMap.name }}
+data:
+  k3s-copy.yaml: |
+    {{ .Values.k3sConfig | nindent 4 }}
