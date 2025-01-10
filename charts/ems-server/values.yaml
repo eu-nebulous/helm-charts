@@ -91,6 +91,11 @@ tolerations: []
 
 affinity: {}
 
+livenessProbeInitDelay: 300
+livenessProbePeriod: 30
+readinessProbeInitDelay: 300
+readinessProbePeriod: 30
+
 ports:
   - name: http
     containerPort: 8111
