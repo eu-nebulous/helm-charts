@@ -105,9 +105,13 @@ spec:
           livenessProbe:
             tcpSocket:
               port: http
+            periodSeconds: {{ .Values.livenessProbePeriod }}
+            initialDelaySeconds: {{ .Values.livenessProbeInitDelay }}
           readinessProbe:
             tcpSocket:
               port: http
+            periodSeconds: {{ .Values.readinessProbePeriod }}
+            initialDelaySeconds: {{ .Values.readinessProbeInitDelay }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
