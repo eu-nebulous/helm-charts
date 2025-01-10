@@ -3,6 +3,16 @@ entries:
   ems-server:
   - apiVersion: v2
     appVersion: 7.0.0-SNAPSHOT
+    created: "2025-01-10T10:53:47.825122353Z"
+    description: EMS server Helm chart for Kubernetes
+    digest: 6dc69b80fff38f5606a3efefc56aa296f41cd0f87557693fc3c90cdb4fa6ea3d
+    name: ems-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/ems-server-0.1.2/ems-server-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 7.0.0-SNAPSHOT
     created: "2024-07-11T10:39:19.970270799Z"
     description: EMS server Helm chart for Kubernetes
     digest: 85d3d3f786bb90a9f25508cf9526d051ed859eb165382416444133b347e445e5
@@ -470,4 +480,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2024-12-17T09:27:37.497346394Z"
+generated: "2025-01-10T10:53:47.825184429Z"
