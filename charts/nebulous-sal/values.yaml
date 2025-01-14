@@ -56,3 +56,8 @@ pws:
   url: ""
   username: ""
   password: ""
+
+pvc:
+  name: mariadb-pvc
+  storage: 10Gi
+  accessMode: ReadWriteOnce
