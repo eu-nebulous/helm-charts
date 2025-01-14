@@ -13,10 +13,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.pvc.name }}
+  name: {{ .Release.Name }}-{{ .Values.pvc.name }}
+  namespace: {{ .Release.Namespace }}
 spec:
   accessModes:
     - {{ .Values.pvc.accessMode }}
   resources:
     requests:
       storage: {{ .Values.pvc.storage }}
+
