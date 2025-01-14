@@ -1,4 +1,4 @@
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -79,6 +79,9 @@ spec:
             failureThreshold: 5
             initialDelaySeconds: 30
             periodSeconds: 30
+          volumeMounts:
+            - name: mariadb-storage
+              mountPath: /var/lib/mysql
         - name: sal
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -152,6 +155,9 @@ spec:
       volumes:
         - name: script-volume
           emptyDir: {}
+        - name: mariadb-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-{{ .Values.pvc.name }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
