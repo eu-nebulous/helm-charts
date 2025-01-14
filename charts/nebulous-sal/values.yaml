@@ -57,14 +57,7 @@ pws:
   username: ""
   password: ""
 
-pv:
-  name: mariadb-pv
-  storage: 10Gi
-  accessMode: ReadWriteOnce
-  hostPath: /data/mariadb
-
 pvc:
   name: mariadb-pvc
   storage: 10Gi
   accessMode: ReadWriteOnce
-  claimName: "mariadb-pvc"
