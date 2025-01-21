@@ -1,0 +1,29 @@
+namespace: fluentd
+
+labels:
+  app: fluentd
+
+serviceAccount:
+  name: fluentd
+
+elasticsearch:
+  host: "elasticsearch.elasticsearch.svc.cluster.local"
+  port: 9200
+  scheme: "http"
+  user: "elastic"
+  password: "bXktc3VwZXItc3Ryb25nLXBhc3N3b3Jk"
+  indexName: "fluentd-k8s-poc-%Y.%m.%d"
+
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 200Mi
+
+fluentdConfig:
+  nodeName: "efk-stack"
+
+tolerations:
+  - key: node-role.kubernetes.io/master
+    effect: NoSchedule

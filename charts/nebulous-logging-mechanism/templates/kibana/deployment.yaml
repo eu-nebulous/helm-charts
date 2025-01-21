@@ -1,0 +1,62 @@
+# templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.kibana.deployment.name }}
+  namespace: {{ .Values.kibana.namespace }}
+  labels:
+    app: {{ .Values.kibana.service.labels.app }}
+spec:
+  replicas: {{ .Values.kibana.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.kibana.service.labels.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.kibana.service.labels.app }}
+    spec:
+      tolerations:
+        - key: "nebulouscloud.eu/env"
+          operator: "Equal"
+          value: "test"
+          effect: "NoSchedule"
+      containers:
+        - name: kibana
+          image: "{{ .Values.kibana.deployment.image.repository }}:{{ .Values.kibana.deployment.image.tag }}"
+          imagePullPolicy: {{ .Values.kibana.deployment.image.pullPolicy }}
+          resources:
+            limits:
+              cpu: "{{ .Values.kibana.deployment.resources.limits.cpu }}"
+            requests:
+              cpu: "{{ .Values.kibana.deployment.resources.requests.cpu }}"
+          env:
+            - name: ELASTICSEARCH_HOSTS
+              value: "{{ .Values.kibana.configMap.elasticsearchHosts }}"
+            - name: ELASTICSEARCH_USERNAME
+              value: "{{ .Values.kibana.configMap.elasticsearchUsername }}"
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "kibana-chart.fullname" . }}-credentials
+                  key: ELASTICSEARCH_PASSWORD
+          ports:
+            - containerPort: {{ .Values.kibana.deployment.ports.containerPort }}
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: elastic-certificate-pem
+              mountPath: /usr/share/kibana/config/certs
+            - name: kibana-yml
+              mountPath: /usr/share/kibana/config/kibana.yml
+              subPath: kibana.yml
+      volumes:
+        - name: elastic-certificate-pem
+          secret:
+            secretName:  {{ include "kibana-chart.fullname" . }}-certificate
+        - name: kibana-yml
+          configMap:
+            name: {{ .Values.kibana.configMap.name }}
+            items:
+              - key: kibana.yml
+                path: kibana.yml

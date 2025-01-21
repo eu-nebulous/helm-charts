@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: {{ .Values.namespace }}
+data:
+  fluent.conf: |
+    @include pods-fluent.conf
+    @include elastic-fluent.conf
+
+  pods-fluent.conf: |
+    <source>
+      @type tail
+      read_from_head true
+      tag kubernetes.*
+      path /var/log/containers/*.log
+      pos_file /var/log/fluentd-containers.log.pos
+      exclude_path ["/var/log/containers/fluent*", "/var/log/containers/kube-*"]
+      <parse>
+        @type cri
+      </parse>
+    </source>
+
+  elastic-fluent.conf: |
+    <match kubernetes.**>
+      @type elasticsearch
+      @log_level info
+      host "{{ .Values.elasticsearch.host }}"
+      port "{{ .Values.elasticsearch.port }}"
+      user "{{ .Values.elasticsearch.user }}"
+      password "{{ .Values.elasticsearch.password }}"
+      scheme "{{ .Values.elasticsearch.scheme }}"
+      index_name "{{ .Values.elasticsearch.indexName }}"
+      include_timestamp true
+    </match>

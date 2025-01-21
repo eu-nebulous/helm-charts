@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.kibana.configMap.name }}
+  namespace: {{ .Values.kibana.namespace }}
+data:
+  kibana.yml: |
+    server.host: "{{ .Values.kibana.configMap.kibanaYml.server.host }}"
+    server.shutdownTimeout: "{{ .Values.kibana.configMap.kibanaYml.server.shutdownTimeout }}"
+    elasticsearch.hosts: {{ toJson .Values.kibana.configMap.kibanaYml.elasticsearch.hosts }}
+    monitoring.ui.container.elasticsearch.enabled: {{ .Values.kibana.configMap.kibanaYml.monitoring.ui.container.elasticsearch.enabled }}
+    xpack.encryptedSavedObjects.encryptionKey: {{ .Values.kibana.configMap.kibanaYml.xpack.encryptedSavedObjects.encryptionKey }}
+    xpack.reporting.encryptionKey: {{ .Values.kibana.configMap.kibanaYml.xpack.reporting.encryptionKey }}
+    xpack.security.encryptionKey: {{ .Values.kibana.configMap.kibanaYml.xpack.security.encryptionKey }}
+  # Uncomment and set if SERVER_NAME is used
+  # SERVER_NAME: "{{ .Values.kibana.configMap.serverName }}"
+  ELASTICSEARCH_HOSTS: "{{ .Values.kibana.configMap.elasticsearchHosts }}"
+  ELASTICSEARCH_USERNAME: "{{ .Values.kibana.configMap.elasticsearchUsername }}"

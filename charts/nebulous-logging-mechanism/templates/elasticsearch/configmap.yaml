@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "elasticsearch-chart.fullname" . }}-config
+  namespace: {{ .Values.elasticsearch.namespace }}
+data:
+  elasticsearch.yml: |
+    xpack.security.transport.ssl.keystore.path: "/usr/share/elasticsearch/config/certs/elastic-certificates.p12"
+    xpack.security.transport.ssl.truststore.path: "/usr/share/elasticsearch/config/certs/elastic-certificates.p12"
+    cluster.name: "{{ .Values.elasticsearch.clusterName }}"
+    bootstrap.memory_lock: {{ .Values.elasticsearch.config.bootstrapMemoryLock | default "false" }}
+    xpack.security.enabled: {{ .Values.elasticsearch.config.xpack.security.enabled | default "false" }}
+    xpack.security.transport.ssl.enabled: {{ .Values.elasticsearch.config.xpack.security.transport.ssl.enabled | default "false" }}
+    xpack.security.transport.ssl.verification_mode: {{ .Values.elasticsearch.config.xpack.security.transport.ssl.verificationMode | default "none" }}
+    xpack.security.http.ssl.enabled: {{ .Values.elasticsearch.config.xpack.security.http.ssl.enabled | default "false" }}
+    xpack.security.http.ssl.truststore.path: /usr/share/elasticsearch/config/certs/elastic-certificates.p12
+    xpack.security.http.ssl.keystore.path: /usr/share/elasticsearch/config/certs/elastic-certificates.p12
+    xpack.license.self_generated.type: {{ .Values.elasticsearch.config.xpack.license.selfGenerated.type | quote }}
+    network.host: "{{ .Values.elasticsearch.networkHost | default "0.0.0.0" }}"
+    logger.org.elasticsearch.transport: {{ .Values.elasticsearch.config.logger.transport | default "error" }}
+    logger.org.elasticsearch.discovery: {{ .Values.elasticsearch.config.logger.discovery | default "error" }}
+    discovery.seed_hosts:
+{{- range .Values.elasticsearch.config.discovery.seedHosts }}
+      - {{ . | quote }}
+{{- end }}
+    cluster.initial_master_nodes:
+{{- range .Values.elasticsearch.config.discovery.initialMasterNodes }}
+      - {{ . | quote }}
+{{- end }}
