@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: es-data-volume
+  labels:
+    type: local
+spec:
+  storageClassName: local-path
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  hostPath:
+    path: "/var/lib/rancher/k3s/storage/es-data"

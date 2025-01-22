@@ -19,11 +19,4 @@ data:
     network.host: "{{ .Values.elasticsearch.networkHost | default "0.0.0.0" }}"
     logger.org.elasticsearch.transport: {{ .Values.elasticsearch.config.logger.transport | default "error" }}
     logger.org.elasticsearch.discovery: {{ .Values.elasticsearch.config.logger.discovery | default "error" }}
-    discovery.seed_hosts:
-{{- range .Values.elasticsearch.config.discovery.seedHosts }}
-      - {{ . | quote }}
-{{- end }}
-    cluster.initial_master_nodes:
-{{- range .Values.elasticsearch.config.discovery.initialMasterNodes }}
-      - {{ . | quote }}
-{{- end }}
+    discovery.type: "single-node"

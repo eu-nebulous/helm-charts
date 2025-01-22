@@ -1,13 +1,10 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ include "elasticsearch-chart.fullname" . }}
   namespace: {{ .Values.elasticsearch.namespace }}
 spec:
-  serviceName: {{ include "elasticsearch-chart.fullname" . }}
-  replicas: {{ .Values.elasticsearch.replicaCount | default 3 }}
-  updateStrategy:
-    type: OnDelete
+  replicas: {{ .Values.elasticsearch.replicaCount | default 1 }}
   selector:
     matchLabels:
       app: {{ include "elasticsearch-chart.name" . }}
@@ -39,9 +36,9 @@ spec:
                   key: password
           resources:
             limits:
-              {{- toYaml .Values.elasticsearch.resources.limits | nindent 12 }}
+              {{- toYaml .Values.elasticsearch.resources.limits | nindent 14 }}
             requests:
-              {{- toYaml .Values.elasticsearch.resources.requests | nindent 12 }}
+              {{- toYaml .Values.elasticsearch.resources.requests | nindent 14 }}
           ports:
             - containerPort: {{ .Values.elasticsearch.service.ports.rest | default 9200 }}
               name: rest
@@ -56,7 +53,7 @@ spec:
               mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
               subPath: elasticsearch.yml
             - name: elastic-certificate-pem
-              mountPath: /usr/share/elasticsearch/config/certs
+              mountPath: /usr/share/elasticsearch/config/certs/elastic-certificates.p12
               subPath: elastic-certificates.p12
               readOnly: true
       initContainers:
@@ -67,9 +64,11 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/share/elasticsearch/data
-
-
-
+        - name: increase-vm-max-map
+          image: busybox
+          command: ["sysctl", "-w", "vm.max_map_count=262144"]
+          securityContext:
+            privileged: true
         - name: increase-fd-ulimit
           image: busybox
           command: [ "sh", "-c", "ulimit -n 65536" ]
@@ -82,17 +81,7 @@ spec:
                 path: elasticsearch.yml
         - name: elastic-certificate-pem
           secret:
-            secretName: {{ include "elasticsearch-chart.fullname" . }}-certificate  
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-        labels:
-          app: {{ include "elasticsearch-chart.name" . }}
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        storageClassName: {{ .Values.elasticsearch.storage.storageClass | default "standard" }}
-        resources:
-          requests:
-            storage: {{ .Values.elasticsearch.storage.size | default "10Gi" }}
-
+            secretName: {{ include "elasticsearch-chart.fullname" . }}-certificate
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "elasticsearch-chart.fullname" . }}-data
