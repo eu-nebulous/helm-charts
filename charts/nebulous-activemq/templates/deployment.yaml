@@ -48,11 +48,11 @@ spec:
           livenessProbe:
             tcpSocket:
               port: activemq
-            periodSeconds: 10
+            periodSeconds: 50
           readinessProbe:
             tcpSocket:
               port: activemq
-            periodSeconds: 10
+            periodSeconds: 50
           startupProbe:
             tcpSocket:
               port: activemq
