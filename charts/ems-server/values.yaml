@@ -107,7 +107,7 @@ ports:
 
 #
 # =====  Configuration passed at command line  =====
-# =====    (see also: deployment.yaml file)    =====
+# =====    (see also: statefulset.yaml file)    =====
 #
 app_uuid: ''
 broker_address: ''

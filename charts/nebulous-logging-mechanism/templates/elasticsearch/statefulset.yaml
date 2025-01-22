@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.elasticsearch.namespace }}
 spec:
   serviceName: {{ include "elasticsearch-chart.fullname" . }}
-  replicas: {{ .Values.elasticsearch.replicaCount | default 3 }}
+  replicas: {{ .Values.elasticsearch.replicaCount | default 1 }}
   updateStrategy:
     type: OnDelete
   selector:
