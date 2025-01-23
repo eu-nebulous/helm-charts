@@ -1,6 +1,6 @@
 {{- if .Values.kibana.ingress.enabled -}}
 {{- $fullName := include "kibana-chart.fullname" . -}}
-{{- $svcPort := .Values.kibana.service.ports.rest -}}
+{{- $svcPort := .Values.kibana.service.port -}}
 {{- if and .Values.kibana.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.kibana.ingress.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.kibana.ingress.annotations "kubernetes.io/ingress.class" .Values.kibana.ingress.className}}
