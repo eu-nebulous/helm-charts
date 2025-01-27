@@ -411,6 +411,16 @@ entries:
   nebulous-sal:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2025-01-27T13:35:35.290586776Z"
+    description: A Helm chart for Kubernetes
+    digest: 79c63c037656b3e87a56dcae4de060f0c72df9542305cd68137d72963aa81c36
+    name: nebulous-sal
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-sal-0.2.5/nebulous-sal-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-01-14T10:56:03.994733808Z"
     description: A Helm chart for Kubernetes
     digest: 6a7228bd4ebe4b2a8d2c52ceafef085dddd482adb103ecbd8258f2de6bcf9d06
@@ -500,4 +510,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-22T14:12:08.780689271Z"
+generated: "2025-01-27T13:35:35.290675491Z"
