@@ -6,6 +6,11 @@ metadata:
   labels:
     {{- include "nebulous-sal.labels" . | nindent 4 }}
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -19,6 +24,7 @@ spec:
       labels:
         {{- include "nebulous-sal.selectorLabels" . | nindent 8 }}
     spec:
+      terminationGracePeriodSeconds: 60
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
