@@ -82,6 +82,7 @@ spec:
           volumeMounts:
             - name: mariadb-storage
               mountPath: /var/lib/mysql
+          terminationGracePeriodSeconds: 60 
         - name: sal
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
