@@ -4,4 +4,4 @@ metadata:
   name: {{ .Values.configMap.name }}
 data:
   k3s-copy.yaml: |
-    {{ .Values.k3sConfig | nindent 4 }}
+    {{ .Values.configMap.k3sConfig | default "" | nindent 4 }}
