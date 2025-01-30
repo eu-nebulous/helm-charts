@@ -168,6 +168,16 @@ entries:
   nebulous-forecast-ensembler:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-01-30T14:19:55.471099835Z"
+    description: A Helm chart for Kubernetes
+    digest: 7223e69cf7118c633cf560da50c282150dfff41d348250ff2a0c2028e9c0b956
+    name: nebulous-forecast-ensembler
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-forecast-ensembler-0.3.0/nebulous-forecast-ensembler-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-12-17T09:27:37.497281603Z"
     description: A Helm chart for Kubernetes
     digest: 444a0e3639fc87cadc6702ec2a75a7e80061d2a425be8deaa98785855a48153b
@@ -510,4 +520,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-27T13:35:35.290675491Z"
+generated: "2025-01-30T14:19:55.471174193Z"
