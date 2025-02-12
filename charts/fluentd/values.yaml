@@ -11,7 +11,7 @@ elasticsearch:
   port: 9200
   scheme: "http"
   user: "elastic"
-  password: "bXktc3VwZXItc3Ryb25nLXBhc3N3b3Jk"
+  password: "my-super-strong-password"
   indexName: "fluentd-k8s-poc-%Y.%m.%d"
 
 resources:
@@ -27,3 +27,6 @@ fluentdConfig:
 tolerations:
   - key: node-role.kubernetes.io/master
     effect: NoSchedule
+
+service:
+  port: 9200

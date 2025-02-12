@@ -33,3 +33,8 @@ data:
       index_name "{{ .Values.elasticsearch.indexName }}"
       include_timestamp true
     </match>
+
+  K8S_NODE_NAME: "efk-stack"
+  FLUENT_ELASTICSEARCH_USER: "elastic"
+  NUMBER_OF_REPLICAS: "2"
+  FLUENT_ELASTICSEARCH_HOST: "elasticsearch.elasticsearch.svc.cluster.local"
