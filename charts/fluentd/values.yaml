@@ -1,5 +1,8 @@
 namespace: fluentd
 
+ingress:
+  enabled: false
+
 labels:
   app: fluentd
 
