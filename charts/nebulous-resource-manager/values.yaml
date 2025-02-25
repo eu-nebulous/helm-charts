@@ -96,3 +96,12 @@ env:
   RM_ADMIN_PASSWD: "admin"
   RM_USER_PASSWD: "user"
   NEBULOUS_SERVER_IP_ADDRESS: "127.0.0.1"
+
+tailscale:
+  env:
+    - name: TS_EXTRA_ARGS
+      value: ""
+    - name: TS_USERSPACE
+      value: "false"
+    - name: TS_KUBE_SECRET
+      value: ""
