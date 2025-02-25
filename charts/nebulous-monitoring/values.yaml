@@ -217,3 +217,12 @@ env:
   # EMS_CLIENT_BROKER_PASSWORD: "333"
   EMS_CLIENT_KEYSTORE_SECRET: ""
   EMS_CLIENT_TRUSTSTORE_SECRET: ""
+
+tailscale:
+  env:
+    - name: TS_EXTRA_ARGS
+      value: ""
+    - name: TS_USERSPACE
+      value: "false"
+    - name: TS_KUBE_SECRET
+      value: ""

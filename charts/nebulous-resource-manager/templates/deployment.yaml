@@ -28,6 +28,17 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
+        - name: tailscale-sidebar
+          image: ghcr.io/tailscale/tailscale:latest
+          env:
+            {{- range .Values.tailscale.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+          securityContext:
+            capabilities:
+              add:
+                  - NET_ADMIN
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
