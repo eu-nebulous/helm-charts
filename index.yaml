@@ -378,6 +378,16 @@ entries:
   nebulous-overlay-network-manager:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-03-04T13:41:03.336845778Z"
+    description: A Helm chart for Kubernetes
+    digest: b2fe24df47f78c41655599501ee9201c0ff66547c477fbcac85a867405e40411
+    name: nebulous-overlay-network-manager
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-overlay-network-manager-0.2.0/nebulous-overlay-network-manager-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-07-13T15:47:52.419478816Z"
     description: A Helm chart for Kubernetes
     digest: 1779a10adb746b95b822e573d40f2923684ec083f7d43ce260b3e8d3d69c91a7
@@ -540,4 +550,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-25T13:24:18.086586801Z"
+generated: "2025-03-04T13:41:03.336918884Z"
