@@ -104,7 +104,7 @@ spec:
               protocol: TCP
           env:
             - name: CLUSTER_TYPE
-              value: "{{ .Values.sal.CLUSTER_TYPE | default k8s }}"
+              value: {{ .Values.sal.CLUSTER_TYPE | default "k8s" | quote}}
             - name: MYSQL_DATABASE
               value: proactive
             - name: PROPERTIES_FILENAME
