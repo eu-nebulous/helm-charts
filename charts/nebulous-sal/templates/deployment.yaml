@@ -103,6 +103,8 @@ spec:
               name: pda
               protocol: TCP
           env:
+            - name: CLUSTER_TYPE
+              value: "{{ .Values.sal.CLUSTER_TYPE | default k8s }}"
             - name: MYSQL_DATABASE
               value: proactive
             - name: PROPERTIES_FILENAME
