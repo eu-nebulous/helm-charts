@@ -1,5 +1,5 @@
 {{- if .Values.kibana.ingress.enabled -}}
-{{- $fullName := include "kibana-chart.fullname" . -}}
+{{- $fullName := "kibana" -}}
 {{- $svcPort := .Values.kibana.service.port -}}
 {{- if and .Values.kibana.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.kibana.ingress.annotations "kubernetes.io/ingress.class") }}
@@ -15,6 +15,7 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
+  namespace: "kibana"
   name: {{ $fullName }}
   labels:
     app: {{ include "kibana-chart.fullname" . }}
