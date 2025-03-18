@@ -38,4 +38,3 @@ tolerations:
 service:
   type: ClusterIP  # or LoadBalancer / NodePort
   port: 24224
-
