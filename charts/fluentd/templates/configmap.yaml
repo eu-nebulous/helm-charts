@@ -31,5 +31,44 @@ data:
       password "{{ .Values.elasticsearch.password }}"
       scheme "{{ .Values.elasticsearch.scheme }}"
       index_name "{{ .Values.elasticsearch.indexName }}"
+      logstash_format true
+      logstash_prefix "logs-"
+      logstash_dateformat "%Y-%m-%d"
       include_timestamp true
+      flush_interval 5s
+      reconnect_on_error true
+      request_timeout 15s
+      reload_connections true
+      reload_on_failure true
+      <buffer>
+        @type file
+        path /var/log/fluentd-elasticsearch-buffer
+        flush_interval 5s
+        retry_max_interval 30s
+        chunk_limit_size 2M
+        queue_limit_length 64
+        overflow_action block
+      </buffer>
     </match>
+
+  fluent.conf: |
+    @include pods-fluent.conf
+    @include elastic-fluent.conf
+
+  pods-fluent.conf: |
+    <source>
+      @type tail
+      read_from_head true
+      path /var/log/containers/*.log
+      pos_file /var/log/fluentd-containers.log.pos
+      tag kubernetes.*
+      exclude_path ["/var/log/containers/fluent*", "/var/log/containers/kube-*"]
+      <parse>
+        @type cri
+      </parse>
+    </source>
+
+    <filter kubernetes.**>
+      @type kubernetes_metadata
+    </filter>
+
