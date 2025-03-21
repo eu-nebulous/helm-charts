@@ -19,6 +19,7 @@ elasticsearch:
     ports:
       rest: 9200
       interNode: 9300
+      nodePort: 30101
 
   resources:
     limits:
