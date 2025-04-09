@@ -48,6 +48,7 @@ spec:
           livenessProbe:
             tcpSocket:
               port: activemq
+            initialDelaySeconds: 200
             periodSeconds: 50
           readinessProbe:
             tcpSocket:
