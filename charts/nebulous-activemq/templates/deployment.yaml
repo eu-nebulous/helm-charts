@@ -47,8 +47,7 @@ spec:
               protocol: TCP
           livenessProbe:
             tcpSocket:
-              port: activemq
-            initialDelaySeconds: 200
+              port: activemq            
             periodSeconds: 50
           readinessProbe:
             tcpSocket:
@@ -57,8 +56,8 @@ spec:
           startupProbe:
             tcpSocket:
               port: activemq
-            initialDelaySeconds: 10
-            periodSeconds: 10
+            initialDelaySeconds: 120
+            periodSeconds: 30
             failureThreshold: 6
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
