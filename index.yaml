@@ -482,6 +482,21 @@ entries:
   nebulous-proactive:
   - apiVersion: v1
     appVersion: 13.0.1-SNAPSHOT
+    created: "2025-04-10T10:33:02.005538099Z"
+    description: ProActive Helm chart is a solution provided by Activeeon for orchestrating
+      and automating various IT workloads. It runs AI pipelines, business workflows
+      and IT processes on-premise and in the Cloud in a scalable manner.
+    digest: 514a8b5e1ac46423cd313da59bdb1a302fc170bc4586befdda522dcdeba2cc43
+    maintainers:
+    - name: Activeeon
+      url: https://www.activeeon.com/
+    name: nebulous-proactive
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-proactive-3.0.1/nebulous-proactive-3.0.1.tgz
+    version: 3.0.1
+  - apiVersion: v1
+    appVersion: 13.0.1-SNAPSHOT
     created: "2025-04-10T10:11:14.67121645Z"
     description: ProActive Helm chart is a solution provided by Activeeon for orchestrating
       and automating various IT workloads. It runs AI pipelines, business workflows
@@ -658,4 +673,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-10T10:11:14.671312449Z"
+generated: "2025-04-10T10:33:02.005622457Z"
