@@ -2,7 +2,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: {{ .Values.namespace }}
   name: ingress-resource
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"

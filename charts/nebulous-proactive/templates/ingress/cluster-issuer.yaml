@@ -4,7 +4,6 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: cluster-issuer
-  namespace: {{ .Values.namespace }}
 spec:
   {{- if eq .Values.ingress.clusterIssuer.selfSigned.enabled true }}
   selfSigned: {}
