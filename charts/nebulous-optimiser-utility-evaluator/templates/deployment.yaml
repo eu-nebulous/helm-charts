@@ -37,6 +37,13 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          env:
+            - name: SPRING_EXN_USER
+              value: "{{ .Values.app.SPRING_EXN_USER }}"
+            - name: SPRING_EXN_PASSWORD
+              value: "{{ .Values.app.SPRING_EXN_PASSWORD }}"
+
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

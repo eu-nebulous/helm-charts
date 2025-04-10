@@ -80,3 +80,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+
+app:
+  SPRING_EXN_USER: 'admin'
+  SPRING_EXN_PASSWORD: 'nebulous'
