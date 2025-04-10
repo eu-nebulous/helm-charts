@@ -1,0 +1,145 @@
+# The following ConfigMap has environment variables to be consumed by the Server, Node, and database Pod containers
+# These environment variables help configuring the ProActive Scheduler, set up the Worker nodes, and configure the database properties
+# The variables values are fetched from the values.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: env-config
+data:
+  ##########################################################################################################################################
+  ########################## 1. Kube Configuration Properties ##############################################################################
+  ##########################################################################################################################################
+  # This param is used to make kube specific operations in the init-script file of the Scheduler Server container
+  INSTALLATION_TYPE: kubernetes
+
+  ##########################################################################################################################################
+  ########################## 2. PWS Server Configuration Properties ########################################################################
+  ##########################################################################################################################################
+
+  # The internal hostname used (e.g. localhost, myserver) or IP address (e.g. 127.0.0.1, 192.168.12.1)
+  PWS_HOST_ADDRESS: localhost
+  # The internal http protocol to use (http or https)
+  PWS_PROTOCOL: {{ .Values.protocol }}
+  # The internal port used (e.g., 8080 for http, 8443 for https)
+  PWS_PORT: {{ .Values.ports.httpPort | quote }}
+  # The internal port to use for PARM communication, 33647 by default
+  PWS_PAMR_PORT: {{ .Values.ports.pamrPort | quote }}
+  # Remove jobs history older than (in days), 30 days by default
+  PWS_JOB_CLEANUP_DAYS: {{ .Values.housekeepingDays | quote }}
+  # User starting the ProActive Server
+  PWS_USER_ID: {{ .Values.user.uid | quote }}
+  PWS_USER_GROUP_ID: {{ .Values.user.gid | quote }}
+  PWS_USER_NAME: {{ .Values.user.userName }}
+  PWS_USER_GROUP_NAME: {{ .Values.user.groupName }}
+  # Password of the ProActive 'admin' user
+  PWS_LOGIN_ADMIN_PASSWORD: {{ .Values.proactiveAdminPassword }}
+  # Number of ProActive agent nodes to deploy on the ProActive Server machine
+  PWS_WORKER_NODES: {{ .Values.serverWorkerNodes | quote }}
+
+  ##########################################################################################################################################
+  ########################## 3. Public Access Configuration Properties #####################################################################
+  ##########################################################################################################################################
+
+  # 'ENABLE_PUBLIC_ACCESS' should be set to true when the ProActive Server is deployed behind a reverse proxy or inside a cloud instance
+  ENABLE_PUBLIC_ACCESS: {{- if eq .Values.ingress.enabled true }} "true" {{ else }} "false" {{ end }}
+  # Public Hostname used (e.g. public.myserver.mydomain) or IP address (e.g. 192.168.12.1)
+  PWS_PUBLIC_HOSTNAME: {{ .Values.ingress.hostname }}
+  # Public protocol used (http or https)
+  PWS_PUBLIC_SCHEME: https
+  # Public port used (e.g. 8080, 8443)
+  PWS_PUBLIC_PORT: "443"
+
+  ##########################################################################################################################################
+  ########################## 4. TLS Certificate Configuration Properties ###################################################################
+  ##########################################################################################################################################
+
+  # 'ENABLE_TLS_CERTIFICATE_CONFIGURATION' should be set to true in case you have a valid certificate for the host address
+  # The certificate is managed by the Ingress Service, so it is recommended to set this property to false
+  ENABLE_TLS_CERTIFICATE_CONFIGURATION: "false"
+
+  ##########################################################################################################################################
+  ########################## 5. LDAP Configuration Properties ##############################################################################
+  ##########################################################################################################################################
+
+  # 'ENABLE_LDAP_AUTHENTICATION' should be set to true if you would like to enable the LDAP authentication to the ProActive Server
+  ENABLE_LDAP_AUTHENTICATION: {{ .Values.ldapConfiguration.enableLdapConfiguration | quote }}
+  # Url of the ldap server. Multiple urls can be provided separated by commas
+  LDAP_SERVER_URLS: {{ .Values.ldapConfiguration.serverUrls }}
+  # Scope in the LDAP tree where users can be found
+  LDAP_USER_SUBTREE: {{ .Values.ldapConfiguration.userSubtree }}
+  # Scope in the LDAP tree where groups can be found
+  LDAP_GROUP_SUBTREE: {{ .Values.ldapConfiguration.groupSubtree }}
+  # Login that will be used when binding to the ldap server (to search for a user and its group). The login should be provided using its ldap distinguished name
+  LDAP_BIND_LOGIN: {{ .Values.ldapConfiguration.bindLogin }}
+  # Password associated with the bind login
+  LDAP_BIND_PASSWORD: {{ .Values.ldapConfiguration.bindPassword }}
+  # Ldap filter used to search for a user. %s corresponds to the user login name that will be given as parameter to the filter
+  LDAP_USER_FILTER: {{ .Values.ldapConfiguration.userFilter }}
+  # Ldap filter used to search for all groups associated with a user. %s corresponds to the user distinguished name found by the user filter
+  LDAP_GROUP_FILTER: {{ .Values.ldapConfiguration.groupFilter }}
+  # A login name that will be used to test the user and group filter and validate the configuration. The test login name must be provided as a user id
+  LDAP_TEST_LOGIN: {{ .Values.ldapConfiguration.testLogin }}
+  # Password associated with the test user
+  LDAP_TEST_PASSWORD: {{ .Values.ldapConfiguration.testPassword }}
+  # List of existing ldap groups that will be associated with a ProActive administrator role. Multiple groups can be provided separated by commas
+  LDAP_ADMIN_ROLES: {{ .Values.ldapConfiguration.adminRoles }}
+  # List of existing ldap groups that will be associated with a ProActive standard user role. Multiple groups can be provided separated by commas
+  LDAP_USER_ROLES: {{ .Values.ldapConfiguration.userRoles }}
+  # If enabled, the group filter will use as parameter the user uid instead of its distinguished name
+  LDAP_GROUP_FILTER_USE_UID: {{ .Values.ldapConfiguration.groupFilterUseUid | quote }}
+  # If enabled, StartTLS mode is activated
+  LDAP_START_TLS: {{ .Values.ldapConfiguration.startTls | quote }}
+  # If enabled, authentication shadow users mode is activated
+  LDAP_AUTHENTICATION_SHADOW_USERS: {{ .Values.ldapConfiguration.authenticationShadowUsers | quote }}
+
+  ##########################################################################################################################################
+  ########################## 6. PWS Users Configuration Properties #########################################################################
+  ##########################################################################################################################################
+
+  # 'ENABLE_USERS_CONFIGURATION' should be set to true if you would like to create internal ProActive users via login/password
+  ENABLE_USERS_CONFIGURATION: {{ .Values.usersConfiguration.addUsersConfiguration | quote }}
+  # A json formatted array where each object defines a set of LOGIN, PASSWORD, and GROUPS of a ProActive internal user
+  PWS_USERS: {{ .Values.usersConfiguration.users | toJson | quote}}
+
+  ##########################################################################################################################################
+  ########################## 7. External Database Configuration Properties #################################################################
+  ##########################################################################################################################################
+
+  # 'ENABLE_EXTERNAL_DATABASE_CONFIGURATION' should be set to true if you are planning to use ProActive with an external database (i.e., postgres)
+  # It is recommended to not change these parameters unless you would like to change the passwords
+  ENABLE_EXTERNAL_DATABASE_CONFIGURATION: {{ .Values.database.enabled | quote }}
+  POSTGRES_PASSWORD: {{ .Values.database.passwords.postgresPassword }}
+  DB_DNS: "proactive-database"
+  DB_PORT: {{ .Values.services.dbService.postgres.port | quote }}
+  DB_DIALECT: {{ .Values.database.dialect }}
+  DB_RM_PASS: {{ .Values.database.passwords.rmPassword }}
+  DB_SCHEDULER_PASS: {{ .Values.database.passwords.schedulerPassword }}
+  DB_CATALOG_PASS: {{ .Values.database.passwords.catalogPassword }}
+  DB_PCA_PASS: {{ .Values.database.passwords.pcaPassword }}
+  DB_NOTIFICATION_PASS: {{ .Values.database.passwords.notificationPassword }}
+
+  ##########################################################################################################################################
+  ########################## 8. Node Sources Configuration Properties ######################################################################
+  ##########################################################################################################################################
+
+  # Enable or not the dynamic kubernetes node source
+  DYNAMIC_NS: {{ .Values.nodeSources.dynamicK8s.enabled | quote }}
+  # Define the max number of nodes in the dynamic kubernetes node source
+  DYNAMIC_NS_MAX_NODES: {{ .Values.nodeSources.dynamicK8s.maxNodes | quote }}
+  # Define the min number of nodes in the dynamic kubernetes node source
+  DYNAMIC_NS_MIN_NODES: {{ .Values.nodeSources.dynamicK8s.minNodes | quote }}
+  # Define the docker image to be used in the dynamic kubernetes node source
+  DYNAMIC_NS_IMAGE: {{ .Values.images.dynamicNodeSource.image | quote }}
+  # Define the dynamic kubernetes node source name
+  DYNAMIC_NS_NAME: {{ .Values.nodeSources.dynamicK8s.name }}
+  # Define the namespace of the dynamic kubernetes node source
+  DYNAMIC_NS_NAMESPACE: {{ .Values.namespace }}
+  # Enable or not the static kubernetes node source
+  STATIC_NS: {{ .Values.nodeSources.staticLocal.enabled | quote }}
+  # Define the static kubernetes node source name
+  STATIC_NS_NAME: {{ .Values.nodeSources.staticLocal.name }}
+  # Define the number of nodes of the static kubernetes node source name
+  STATIC_NS_WORKER_NODES: {{ .Values.nodeSources.staticLocal.numberNodes | quote }}
+
+

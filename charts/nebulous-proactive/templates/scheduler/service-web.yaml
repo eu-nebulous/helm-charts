@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: proactive-scheduler-service-web
+spec:
+  selector:
+    app: proactive-scheduler
+  ports:
+    - name: {{ .Values.services.scheduler.webService.name }}
+      protocol: {{ .Values.services.scheduler.webService.protocol }}
+      port: {{ .Values.services.scheduler.webService.port }}
+      targetPort: {{ .Values.services.scheduler.webService.targetPort }}
+      {{- if and (eq .Values.target.cluster "on-prem") (eq .Values.ingress.enabled false) }}
+      nodePort: {{ .Values.services.scheduler.webService.nodePort }}
+      {{ end }}
+  type: {{- if eq .Values.ingress.enabled false }} {{- if eq .Values.target.cluster "aks" }} LoadBalancer {{ else }} NodePort {{ end }} {{ else }} ClusterIP {{ end }}

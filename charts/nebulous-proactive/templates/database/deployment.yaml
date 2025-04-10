@@ -1,0 +1,47 @@
+{{- if eq .Values.database.enabled true }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: proactive-db
+spec:
+  replicas: {{ .Values.replicas.db.replicaCount }}
+  selector:
+    matchLabels:
+      app: proactive-db
+  template:
+    metadata:
+      labels:
+        app: proactive-db
+        db: postgresql
+    spec:
+      tolerations:
+        - key: "nebulouscloud.eu/env"
+          operator: "Equal"
+          value: "cd"
+          effect: "NoSchedule"
+      containers:
+        - name: proactive-db
+          image: {{ .Values.images.db.postgres.repository }}:{{ .Values.images.db.postgres.tag }}
+          imagePullPolicy: {{ .Values.images.db.postgres.pullPolicy }}
+          resources:
+            requests:
+              cpu: {{ .Values.resources.db.postgres.requests.cpu }}
+              memory: {{ .Values.resources.db.postgres.requests.memory }}
+          envFrom:
+            - configMapRef:
+                name: env-config
+          volumeMounts:
+            - name: db-pv-storage
+              mountPath: {{ .Values.volumeMounts.db.postgres.mountPath | quote }}
+              subPath: postgres
+          ports:
+            - containerPort: {{ .Values.services.dbService.postgres.port }}
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: db-pv-storage
+          persistentVolumeClaim:
+            claimName: proactive-db-pvc
+{{ end }}
+

@@ -1,0 +1,15 @@
+apiVersion: v1
+name: activeeon-proactive-chart
+description: ProActive Helm chart is a solution provided by Activeeon for orchestrating and automating various IT workloads. It runs AI pipelines, business workflows and IT processes on-premise and in the Cloud in a scalable manner.
+
+type: application
+
+# The chart version number is incremented each time we make changes to the chart and its templates.
+version: 2.0.0
+
+# This is the version number of the ProActive release being deployed.
+appVersion: "13.0.1-SNAPSHOT"
+
+maintainers:
+  - name: Activeeon
+    url: https://www.activeeon.com/

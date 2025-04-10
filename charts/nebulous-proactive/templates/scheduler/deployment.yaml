@@ -1,0 +1,171 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: proactive-deployment-scheduler
+  labels:
+    app: proactive-scheduler
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.scheduler.storage | default "10Gi" }}
+
+apiVersion: apps/v1
+kind: Deployment
+# Contains metadata about the Deployment resource itself, including labels and other descriptive information
+metadata:
+  # Specifies the Kubernetes namespace in which this Deployment will be created. The actual value is taken from the 'values.yaml' file
+  namespace: {{ .Values.namespace }}
+  # The name of the Deployment. This name is used as a prefix for the Pods created by the Deployment
+  name: proactive-deployment
+  # A set of labels associated with the Deployment, used for grouping and selecting resources
+  labels:
+    app: proactive-scheduler
+# Describes the desired state of the Deployment, including the number of replicas, selectors, and deployment strategy
+spec:
+  # The desired number of pod replicas that should be running. This value must be equal to 1
+  replicas: {{ .Values.replicas.scheduler.replicaCount }}
+  # Defines how the replicas are selected. In this case, pods with the label app: proactive-scheduler are selected
+  selector:
+    matchLabels:
+      app: proactive-scheduler
+  # Specifies the update strategy for the Deployment. Here, it's set to Recreate, which means new pods are created before old ones are deleted
+  strategy:
+    type: Recreate
+  # Defines the pod template that is used to create new pods managed by the Deployment
+  template:
+    # Metadata for the pod template
+    metadata:
+      # Labels for the pods created from this template
+      labels:
+        app: proactive-scheduler
+      #  Additional annotations for the pods
+      annotations:
+        # An annotation used to compute a checksum of the configmap.yaml file
+        # This is useful to detect updates made to the configMap in order to force pod recreation
+        checksum/config: {{ include (print $.Template.BasePath "/config/configmap.yaml") . | sha256sum }}
+    # Specifies the pod's specification
+    spec:
+      tolerations:
+        - key: "nebulouscloud.eu/env"
+          operator: "Equal"
+          value: "dev"
+          effect: "NoSchedule"
+
+      # The following block is executed only when the postgres database is enabled
+      {{- if eq .Values.database.enabled true }}
+      # Defines a set of containers that run before the main container starts
+      initContainers:
+        # The 'wait-for-pg' container is used to wait for the PostgreSQL database to become available
+        - name: wait-for-pg
+          image: {{ .Values.images.initContainers.repository }}:{{ .Values.images.initContainers.tag }}
+          imagePullPolicy: {{ .Values.images.initContainers.pullPolicy }}
+          command: [ 'sh', '-c', 'until nc -vz -w 3 proactive-database {{ .Values.services.dbService.postgres.port }}; do echo "Waiting for postgres..."; sleep 3; done;' ]
+      {{ end }}
+      # Defines the main containers within the pod
+      containers:
+        # The name of the container
+        - name: proactive-scheduler
+          # Specifies the container image to use from the input configuration file
+          image: {{ .Values.images.scheduler.repository }}:{{ .Values.images.scheduler.tag }}
+          # Specifies the policy for pulling the container image
+          imagePullPolicy: {{ .Values.images.scheduler.pullPolicy }}
+          # Specifies the resource requirements for the container (CPU and memory) as defined in the input configuration file
+          resources:
+            requests:
+              cpu: {{ .Values.resources.scheduler.requests.cpu }}
+              memory: {{ .Values.resources.scheduler.requests.memory }}
+          # Injects environment variables from the ConfigMap named env-config
+          envFrom:
+            - configMapRef:
+                name: env-config
+          # Defines the ports exposed by the container
+          ports:
+            - containerPort: {{ .Values.ports.httpPort }}
+            - containerPort: {{ .Values.ports.pamrPort }}
+          # Specifies a probe to determine if the container is ready to serve traffic
+          readinessProbe:
+            # We make a GET request to one of the Scheduler web portals which is the studio portal
+            httpGet:
+              path: /studio
+              port: {{ .Values.readinessProbe.httpGet.port }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          # Specifies a probe to determine if the container is still alive
+          livenessProbe:
+            httpGet:
+              path: /studio
+              port: {{ .Values.livenessProbe.httpGet.port }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }} # we give some time in order to let the scheduler start properly
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          # Mounts storage volumes to paths within the container
+          volumeMounts:
+            # We mount the three required volumes for the scheduler as described in the 'values.yaml' file
+            - name: scheduler-pv-storage
+              mountPath: {{ .Values.volumeMounts.scheduler.default.mountPath | quote }}
+              subPath: default
+            - name: scheduler-pv-storage
+              mountPath: {{ .Values.volumeMounts.scheduler.previous.mountPath | quote }}
+              subPath: previous
+            - name: scheduler-pv-storage
+              mountPath: {{ .Values.volumeMounts.scheduler.backup.mountPath | quote }}
+              subPath: backup
+              # We mount the cluster config file
+            - name: cluster-config
+              mountPath: "/opt/proactive/server/kube.config"
+              subPath: kube.config
+              # We mount the deployment definition to be used by the dynamic kubernetes node source
+            - name: dynamic-node-deployment
+              mountPath: "/opt/proactive/server/dynamic-node-deployment.yaml"
+              subPath: dynamic-node-deployment.yaml
+            - name: app-config
+              mountPath: "/add-node-sources.sh"
+              subPath: add-node-sources.sh
+          # Specifies the command and arguments for the container
+          command: [ "/bin/sh", "-c" ]
+          # The 'init-script.sh' inside the scheduler container image is a shell script that:
+          # (1) configure the server according to the properties given in the configMap 'env-config' (see configMap.yaml)
+          # (2) check if a current installation already exists and if an upgrade is required
+          # (3) start the ProActive Scheduler Server
+
+          # The 'add-node-sources.sh' inside the scheduler container image is a shell script that:
+          # (1) create an empty node source to host local worker nodes
+          # (2) create a dynamic kubernetes node source with the requested minimum number of nodes
+          # To be able to create the dynamic kubernetes node source the scheduler needs the target AKS cluster config, so that is why 'kube.config' was mounted
+          # The output of the 'add-node-sources.sh' is redirected to a log file for debugging purpose
+
+          # we run 'sleep infinity' to keep the container alive
+          args:
+            - /init-script.sh &
+              bash /add-node-sources.sh > /opt/proactive/server/out.nodes.log &
+              sleep infinity;
+      # /add-node-sources.sh > /opt/proactive/server/out.nodes.log &
+      # Specifies the secret name to use for pulling container images
+      imagePullSecrets:
+        - name: regcred
+      # Defines the volumes that can be mounted by pod containers
+      volumes:
+        # A persistent volume claim named scheduler-pvc
+        - name: scheduler-pv-storage
+          # The 'scheduler-pvc' requests storage for the Azure Disk
+          persistentVolumeClaim:
+            claimName: proactive-deployment-scheduler
+        # A secret named cluster-config.
+        - name: cluster-config
+          secret:
+            secretName: cluster-config
+        # A volume referencing the node deployment secret
+        - name: dynamic-node-deployment
+          secret:
+            secretName: dynamic-node-deployment
+        - name: app-config
+          configMap:
+            name: app-config
+            defaultMode: 0777

@@ -1,0 +1,16 @@
+# This condition checks if the value of the configuration parameter database.type is equal to "postgres"
+# If this condition is met, the following resources will be defined
+{{- if eq .Values.database.enabled true }}
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: proactive-database
+spec:
+  selector:
+    app: proactive-db
+  ports:
+    - port: {{ .Values.services.dbService.postgres.port }}
+      protocol: {{ .Values.services.dbService.postgres.protocol }}
+  type: {{ .Values.services.dbService.postgres.type }}
+{{ end }}
