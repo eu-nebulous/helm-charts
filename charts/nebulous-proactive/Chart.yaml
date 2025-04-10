@@ -5,7 +5,7 @@ description: ProActive Helm chart is a solution provided by Activeeon for orches
 type: application
 
 # The chart version number is incremented each time we make changes to the chart and its templates.
-version: 2.0.0
+version: 3.0.0
 
 # This is the version number of the ProActive release being deployed.
 appVersion: "13.0.1-SNAPSHOT"
