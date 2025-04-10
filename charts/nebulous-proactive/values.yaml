@@ -382,11 +382,11 @@ images:
     # 'dockerhub.activeeon.com' is the private Activeeon docker registry
     # For example, dev is the namespace used to host the scheduler snapshot images
     # proactive-scheduler is the image name
-    repository:  quay.io/nebulous/proactive
+    repository:  quay.io/nebulous/proactive-scheduler
     # The 'tag' defines the scheduler version to be installed
     # For example, 13.1.0-SNAPSHOT-2023-08-28 represents the scheduler snapshot version 13.1.0 released on 2023-08-28
     # The tag could represent a snapshot release, a minor or major release, a release candidate, or a maintenance release
-    tag: proactive-scheduler-14.1.0
+    tag: 14.1.0
     # The 'pullPolicy' determines the conditions under which the container image is fetched from the container registry
     # It could be: IfNotPresent, Always, or Never
     # We recommend to set it to 'always' to always pull the latest image updates
@@ -394,8 +394,8 @@ images:
   # The node image is used by the static worker nodes to instantiate static ProActive agents
   # Custom user application images cannot be provided since the agent is prebuilt and installed in the ProActive Node image
   node:
-    repository:  quay.io/nebulous/proactive
-    tag: proactive-k8s-node-14.1.0
+    repository: quay.io/nebulous/proactive-k8s-node
+    tag: 14.1.0
     pullPolicy: Always
   # The following image is used by the dynamic node source to instantiate dynamic work nodes (e.g., your application image name)
   # This custom image requires 'wget' and 'curl' packages to be installed
@@ -421,8 +421,8 @@ images:
   # You can have more information about the database configuration here: https://doc.activeeon.com/latest/admin/ProActiveAdminGuide.html#_example_configuration_with_postgresql
   db:
     postgres:
-      repository: quay.io/nebulous/proactive
-      tag: postgres-pa-12.16-bullseye
+      repository: quay.io/nebulous/postgres-pa
+      tag: 12.16-bullseye
       pullPolicy: Always
 
 #**************************************** Pod Resources Configuration **************************************************
