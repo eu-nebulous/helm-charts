@@ -510,3 +510,5 @@ livenessProbe:
 
 scheduler:
   storage: "10Gi"
+
+tolerations: []
