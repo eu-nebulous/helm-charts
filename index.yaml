@@ -355,6 +355,16 @@ entries:
   nebulous-monitoring:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-04-10T09:49:01.432770449Z"
+    description: EMS server Helm chart for Kubernetes
+    digest: d157dc50e72be27428fe08e79fa1639a5b2da32288c42a94e92293057e06643a
+    name: nebulous-monitoring
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-0.4.0/nebulous-monitoring-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-02-25T13:24:17.904825251Z"
     description: EMS server Helm chart for Kubernetes
     digest: e8a6f796b2b271e8768c74a1c56ac8652543124dc55160dd74551badaf35474e
@@ -417,6 +427,16 @@ entries:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-optimiser-solver-0.1.0/nebulous-optimiser-solver-0.1.0.tgz
     version: 0.1.0
   nebulous-optimiser-utility-evaluator:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-04-10T09:49:01.546404586Z"
+    description: A Helm chart for Kubernetes
+    digest: c3dc1065f11c95f207223b539dff93a0cdf736c331f20f3be301d48d2e5e801b
+    name: nebulous-optimiser-utility-evaluator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-optimiser-utility-evaluator-0.2.0/nebulous-optimiser-utility-evaluator-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: latest
     created: "2024-07-13T15:47:52.311797533Z"
@@ -622,4 +642,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-10T09:27:17.62395578Z"
+generated: "2025-04-10T09:49:01.546509382Z"
