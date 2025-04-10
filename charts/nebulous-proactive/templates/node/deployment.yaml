@@ -74,8 +74,8 @@ spec:
             - name: pa-node-data
               mountPath: /tmp
 
-      imagePullSecrets:
-        - name: regcred
+      # imagePullSecrets:
+      #  - name: regcred
 
       volumes:
         # An emptyDir volume is a temporary storage space that is created and managed by Kubernetes

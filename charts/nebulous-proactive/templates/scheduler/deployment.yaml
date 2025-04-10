@@ -126,8 +126,8 @@ spec:
               sleep infinity;
       # /add-node-sources.sh > /opt/proactive/server/out.nodes.log &
       # Specifies the secret name to use for pulling container images
-      imagePullSecrets:
-        - name: regcred
+      # imagePullSecrets:
+      #  - name: regcred
       # Defines the volumes that can be mounted by pod containers
       volumes:
         # A persistent volume claim named scheduler-pvc
