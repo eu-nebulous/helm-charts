@@ -4,7 +4,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ .Values.namespace }}
   name: node-deployment
   labels:
     app: proactive-node
@@ -22,11 +21,6 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/config/configmap.yaml") . | sha256sum }}
     spec:
-      tolerations:
-        - key: "nebulouscloud.eu/env"
-          operator: "Equal"
-          value: "dev"
-          effect: "NoSchedule"
       initContainers:
         - name: wait-for-server
           image: {{ .Values.images.initContainers.repository }}:{{ .Values.images.initContainers.tag }}

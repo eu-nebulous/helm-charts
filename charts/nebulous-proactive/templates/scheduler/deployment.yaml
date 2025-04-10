@@ -1,24 +1,8 @@
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  namespace: {{ .Values.namespace }}
-  name: proactive-deployment-scheduler
-  labels:
-    app: proactive-scheduler
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: {{ .Values.scheduler.storage | default "10Gi" }}
-
 apiVersion: apps/v1
 kind: Deployment
 # Contains metadata about the Deployment resource itself, including labels and other descriptive information
 metadata:
   # Specifies the Kubernetes namespace in which this Deployment will be created. The actual value is taken from the 'values.yaml' file
-  namespace: {{ .Values.namespace }}
   # The name of the Deployment. This name is used as a prefix for the Pods created by the Deployment
   name: proactive-deployment
   # A set of labels associated with the Deployment, used for grouping and selecting resources
@@ -49,12 +33,6 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/config/configmap.yaml") . | sha256sum }}
     # Specifies the pod's specification
     spec:
-      tolerations:
-        - key: "nebulouscloud.eu/env"
-          operator: "Equal"
-          value: "dev"
-          effect: "NoSchedule"
-
       # The following block is executed only when the postgres database is enabled
       {{- if eq .Values.database.enabled true }}
       # Defines a set of containers that run before the main container starts

@@ -11,4 +11,3 @@ spec:
   resources:
     requests:
       storage: {{ .Values.scheduler.storage | default "10Gi" }}
-

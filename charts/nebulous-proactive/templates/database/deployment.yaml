@@ -2,7 +2,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ .Values.namespace }}
   name: proactive-db
 spec:
   replicas: {{ .Values.replicas.db.replicaCount }}
@@ -15,11 +14,6 @@ spec:
         app: proactive-db
         db: postgresql
     spec:
-      tolerations:
-        - key: "nebulouscloud.eu/env"
-          operator: "Equal"
-          value: "cd"
-          effect: "NoSchedule"
       containers:
         - name: proactive-db
           image: {{ .Values.images.db.postgres.repository }}:{{ .Values.images.db.postgres.tag }}
