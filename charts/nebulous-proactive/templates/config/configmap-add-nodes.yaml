@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: app-config
+data:
+  add-node-sources.sh: |
+    {{ .Files.Get "files/add-node-sources.sh" | nindent 4 }}

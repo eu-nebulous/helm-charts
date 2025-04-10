@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    pa-node-name: ${NODE_NAME_LOWER_CASE}
+    pa-node-source-name: ${NODE_SOURCE_NAME_LOWER_CASE}
+  name: ${DEPLOYMENT_NAME}  # must be unique
+  namespace: ${KUBERNETES_NAMESPACE}
+spec:
+  progressDeadlineSeconds: 2147483647
+  replicas: 1
+  revisionHistoryLimit: 2147483647
+  selector:
+    matchLabels:
+      pa-node-name: ${NODE_NAME_LOWER_CASE}  # Label key and value are important so that the cleaning procedure finds this deployment
+      pa-node-source-name: ${NODE_SOURCE_NAME_LOWER_CASE} # Label key and value are important so that the cleaning procedure finds this deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        pa-node-name: ${NODE_NAME_LOWER_CASE}
+        pa-node-source-name: ${NODE_SOURCE_NAME_LOWER_CASE}
+    spec:
+      containers:
+        - name: proactive-node
+          args:
+            - -c
+            - ${STARTUP_SCRIPT}
+          command:
+            - /bin/sh
+          image: ${DOCKER_IMAGE}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 64738 # PNP
+              protocol: TCP
+            - containerPort: 64739 # PNPS
+              protocol: TCP
+            - containerPort: 33647 # PAMR
+              protocol: TCP
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2375
+          volumeMounts:
+            - name: pa-node-data
+              mountPath: /tmp
+        - name: proactive-docker-daemon
+          image: docker:20.10.7-dind
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+          resources:
+            requests:
+              cpu: 20m
+              memory: 512Mi
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: pa-node-data
+              mountPath: /tmp
+      volumes:
+        - name: pa-node-data
+          emptyDir: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30

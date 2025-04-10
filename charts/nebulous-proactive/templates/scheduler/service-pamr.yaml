@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: proactive-scheduler-service
+spec:
+  selector:
+    app: proactive-scheduler
+  ports:
+    - port: {{ .Values.services.scheduler.pamrService.port }}
+      protocol: {{ .Values.services.scheduler.pamrService.protocol }}
+      name: {{ .Values.services.scheduler.pamrService.name }}
+  type: {{ .Values.services.scheduler.pamrService.type }}

@@ -1,0 +1,16 @@
+CHART NAME: {{ .Chart.Name }}
+CHART VERSION: {{ .Chart.Version }}
+APP VERSION: {{ .Chart.AppVersion }}
+
+- This helm chart for ProActive provides ready-to-use Kubernetes configurations that enable you running ProActive Workflows and Scheduling as a set of Pods.
+- It allows you to start the following Pods:
+  * ProActive Server Pod
+  * (Optional) ProActive Static Nodes Pod
+  * (Optional) ProActive Dynamic Nodes Pod
+  * (Optional) ProActive Database Pod (PostgreSQL). The Database Pod is not started when using an embedded HSQL Database.
+
+- The installation settings could be configured beforehand using the "values.yaml" file. More info about the different properties to set up is given in the README.md file.
+
+- The ProActive Pods pull the container images from the Private Activeeon Docker Registry.
+- To be able to pull images, a ProActive enterprise licence and access credentials are required.
+- Please contact us at contact@activeeon.com to request access and support before installing the chart.

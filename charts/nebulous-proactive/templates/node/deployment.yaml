@@ -1,0 +1,92 @@
+# We check if the value of the configuration parameter staticLocal.enabled is equal to true
+# If this condition is met, the following Deployment resource will be defined
+{{- if eq .Values.nodeSources.staticLocal.enabled true }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: node-deployment
+  labels:
+    app: proactive-node
+spec:
+  replicas: {{ .Values.replicas.node.replicaCount }} # can be scaled up & down on the fly
+  selector:
+    matchLabels:
+      app: proactive-node
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: proactive-node
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/config/configmap.yaml") . | sha256sum }}
+    spec:
+      tolerations:
+        - key: "nebulouscloud.eu/env"
+          operator: "Equal"
+          value: "dev"
+          effect: "NoSchedule"
+      initContainers:
+        - name: wait-for-server
+          image: {{ .Values.images.initContainers.repository }}:{{ .Values.images.initContainers.tag }}
+          imagePullPolicy: {{ .Values.images.initContainers.pullPolicy }}
+          # We need to wait for the server to be completely up before adding nodes
+          # So, wait for the service 'proactive-scheduler-service-web' to become available by repeatedly attempting to establish a connection to it using nc
+          command: [ 'sh', '-c', 'until nc -vz -w 3 proactive-scheduler-service-web {{ .Values.ports.httpPort }}; do echo "Waiting for the server to be up..."; sleep 3; done; echo "Waiting for Node Sources to be added...";sleep 20;' ]
+      containers:
+        - name: proactive-node
+          image: {{ .Values.images.node.repository }}:{{ .Values.images.node.tag }}
+          imagePullPolicy: {{ .Values.images.node.pullPolicy }}
+          resources:
+            requests:
+              cpu: {{ .Values.resources.node.requests.cpu }}
+              memory: {{ .Values.resources.node.requests.memory }}
+          env:
+            # 'DOCKER_HOST' is used to configure how the Docker client communicates with the Docker daemon (Docker engine) running on the host where the container is deployed
+            # The value tcp://localhost:2375 indicates that the Docker client should communicate with the Docker daemon over a TCP connection on the localhost address and port 2375
+            # This allows the container to interact with the Docker daemon outside the container
+            - name: DOCKER_HOST
+              value: tcp://localhost:2375
+              # 'KUBERNETES_NODE_SERVICE' can be used for advanced node configuration. For now, it is not used, but we keep it for later improvements
+            - name: KUBERNETES_NODE_SERVICE
+              value: "node-deployment-service"
+          envFrom:
+            - configMapRef:
+                name: env-config
+          ports:
+            - containerPort: {{ .Values.ports.pamrPort }}
+          volumeMounts:
+            # /tmp will host temporarily generated nodes data
+            - name: pa-node-data
+              mountPath: /tmp
+
+          # 'dind' container enables the Docker daemon
+          # The 'DOCKER_HOST' env variable is used for this communication
+        - name: dind
+          image: {{ .Values.images.dind.repository }}:{{ .Values.images.dind.tag }}
+          imagePullPolicy: {{ .Values.images.dind.pullPolicy }}
+          securityContext:
+            privileged: true
+          # 'DOCKER_TLS_CERTDIR' is set empty to avoid some security issues related to the certificate
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+          volumeMounts:
+            # to share Docker data between the main container (running the ProActive node) and the "dind" container (running Docker in Docker) within the same pod
+            - name: dind-storage
+              mountPath: /var/lib/docker
+              # /tmp will host temporarily generated nodes data
+            - name: pa-node-data
+              mountPath: /tmp
+
+      imagePullSecrets:
+        - name: regcred
+
+      volumes:
+        # An emptyDir volume is a temporary storage space that is created and managed by Kubernetes
+        - name: dind-storage
+          emptyDir: {}
+        - name: pa-node-data
+          emptyDir: {}
+{{ end }}

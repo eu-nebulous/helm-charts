@@ -1,0 +1,31 @@
+{{- if eq .Values.ingress.enabled true }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: ingress-resource
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/secure-backends: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "/$1"
+    {{- if or (eq .Values.ingress.clusterIssuer.selfSigned.enabled true) (eq .Values.ingress.clusterIssuer.letsEncrypt.enabled true) }}
+    cert-manager.io/cluster-issuer: cluster-issuer
+    {{ end }}
+spec:
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.hostname }}
+      secretName: {{- if eq .Values.ingress.providedCertificate.enabled true }} provided-tls-secret {{ else }} cluster-tls-secret {{ end }}
+  rules:
+    - host: {{ .Values.ingress.hostname }}
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: "/?(.*)"
+            backend:
+              service:
+                name: proactive-scheduler-service-web
+                port:
+                  number: {{ .Values.ports.httpPort }}
+{{ end }}
