@@ -402,7 +402,7 @@ images:
   # The agent will be installed on the fly on the desired container, at the Pod creation
   # By default, we provide the following basic Linux image that includes standard Linux packages and libraries
   dynamicNodeSource:
-    image: dockerhub.activeeon.com/public/proactive-k8s-dynamic-node:latest
+    image: quay.io/repository/nebulous/proactive-k8s-dynamic-node
   # The initContainers are used to do simple Kubernetes service checks
   # Bash scripts are executed to check the response of the service endpoints
   # For example, the Node pod check if the server is up before creating the agent containers

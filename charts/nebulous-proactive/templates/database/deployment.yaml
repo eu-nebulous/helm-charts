@@ -39,8 +39,8 @@ spec:
               subPath: postgres
           ports:
             - containerPort: {{ .Values.services.dbService.postgres.port }}
-      imagePullSecrets:
-        - name: regcred
+#      imagePullSecrets:
+#        - name: regcred
       volumes:
         - name: db-pv-storage
           persistentVolumeClaim:
