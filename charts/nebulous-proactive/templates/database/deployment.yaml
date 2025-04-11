@@ -16,10 +16,12 @@ spec:
     spec:
       {{- with .Values.nodeSelector }}
       nodeSelector:
-        {{- toYaml . | nindent 8 }}
+      {{ toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
-        {{- toYaml . | nindent 8 }}
+      {{ toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: proactive-db
           image: {{ .Values.images.db.postgres.repository }}:{{ .Values.images.db.postgres.tag }}

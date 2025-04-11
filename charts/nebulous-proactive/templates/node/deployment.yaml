@@ -21,12 +21,14 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/config/configmap.yaml") . | sha256sum }}
     spec:
-      {{- with .Values.nodeSelector }}
+{{- with .Values.nodeSelector }}
       nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- with .Values.tolerations }}
+{{ toYaml . | nindent 8 }}
+{{- end }}
+{{- with .Values.tolerations }}
       tolerations:
-        {{- toYaml . | nindent 8 }}
+{{ toYaml . | nindent 8 }}
+{{- end }}
       initContainers:
         - name: wait-for-server
           image: {{ .Values.images.initContainers.repository }}:{{ .Values.images.initContainers.tag }}
