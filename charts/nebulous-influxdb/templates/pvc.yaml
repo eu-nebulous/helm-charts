@@ -3,8 +3,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: influxdb-storage
 spec:
+  {{- if .Values.influxdb.storageClassName }}
+  storageClassName: {{ .Values.influxdb.storageClassName | quote }}
+  {{- end }}
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: {{ .Values.influxdb.storage | quote }}

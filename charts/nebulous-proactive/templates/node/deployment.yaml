@@ -4,7 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-deployment
+  name: proactive-node-deployment
   labels:
     app: proactive-node
 spec:

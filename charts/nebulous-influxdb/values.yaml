@@ -99,3 +99,6 @@ influxdbSetup:
 secrets:
   DOCKER_INFLUXDB_INIT_PASSWORD: "my-password"
   DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "my-super-secret-auth-token"
+
+influxdb:
+  storage: "1Gi"
