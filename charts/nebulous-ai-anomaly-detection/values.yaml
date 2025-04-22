@@ -80,3 +80,21 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+application:
+  env:
+    BROKER_ADDRESS: "nebulous-activemq"
+    BROKER_PORT: 5672
+    BROKER_USERNAME: "admin"
+    BROKER_PASSWORD: "nebulous"
+    INFLUXDB_HOSTNAME: "nebulous-influxdb"
+    INFLUXDB_PORT: 8086
+    INFLUXDB_USERNAME: "my-user"
+    INFLUXDB_PASSWORD: "my-password"
+    NUMBER_OF_DAYS_TO_USE_DATA_FROM: 2
+    NUMBER_OF_MINUTES_TO_INFER: 180
+    PREDICTION_PROCESSING_TIME_SAFETY_MARGIN_SECONDS: 100
+    AI_NSA: "true"
+    AI_NSA_ANOMALY_RATE: 10
+    AI_KMEANS: "true"
+    AI_KMEANS_ANOMALY_RATE: 10
