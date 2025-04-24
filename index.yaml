@@ -114,6 +114,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-ai-anomaly-detection-0.1.0/nebulous-ai-anomaly-detection-0.1.0.tgz
     version: 0.1.0
+  nebulous-bqa-server:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-24T09:37:30.876316168Z"
+    description: A Helm chart for Kubernetes
+    digest: 7f3d74faef7b335c96a4761948980e46c84361dcf56cb6a18222a8131971d334
+    name: nebulous-bqa-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-bqa-server-0.1.0/nebulous-bqa-server-0.1.0.tgz
+    version: 0.1.0
   nebulous-cloud-fog-service-broker:
   - apiVersion: v2
     appVersion: latest
@@ -453,6 +464,17 @@ entries:
     type: application
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-data-persistor-0.1.0/nebulous-monitoring-data-persistor-0.1.0.tgz
+    version: 0.1.0
+  nebulous-ontology-server:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-24T09:37:30.996814192Z"
+    description: A Helm chart for Kubernetes
+    digest: b6a5ea6e655d4c9c32b394f7cce3f086ae2b1d37015c39ba8e6b83637a9ef4bc
+    name: nebulous-ontology-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-ontology-server-0.1.0/nebulous-ontology-server-0.1.0.tgz
     version: 0.1.0
   nebulous-optimiser-controller:
   - apiVersion: v2
@@ -832,6 +854,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-sal-0.1.0/nebulous-sal-0.1.0.tgz
     version: 0.1.0
+  nebulous-sla-generator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-24T09:37:31.126131255Z"
+    description: A Helm chart for Kubernetes
+    digest: 23e59b35babed0210c94193d6699cd54ca8f0586a76c7553e25881432c9203f3
+    name: nebulous-sla-generator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-sla-generator-0.1.0/nebulous-sla-generator-0.1.0.tgz
+    version: 0.1.0
   nebulous-slo-violation-detector:
   - apiVersion: v2
     appVersion: latest
@@ -853,4 +886,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-24T09:01:47.396091711Z"
+generated: "2025-04-24T09:37:31.126285093Z"
