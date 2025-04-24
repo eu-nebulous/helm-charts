@@ -96,6 +96,16 @@ entries:
   nebulous-ai-anomaly-detection:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-04-24T09:01:46.542677464Z"
+    description: A Helm chart for Kubernetes
+    digest: c572948f44afb2b942a3ea2b25fb48cb21e55a5930eee7c9cda43828bc94bbbf
+    name: nebulous-ai-anomaly-detection
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-ai-anomaly-detection-0.1.1/nebulous-ai-anomaly-detection-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-03-18T09:50:00.843878038Z"
     description: A Helm chart for Kubernetes
     digest: 3523a59500a105fcdba723cb623d1e5478959717d2b3b8c8ffb271939430be74
@@ -187,6 +197,16 @@ entries:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-exn-middleware-0.1.0/nebulous-exn-middleware-0.1.0.tgz
     version: 0.1.0
   nebulous-exponential-smoothing-predictor:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-04-24T09:01:46.759328675Z"
+    description: A Helm chart for Kubernetes
+    digest: 357c0b3d6503c4ef6a97394c135a28631be495a11087808fe3bafb6e9c4aead1
+    name: nebulous-exponential-smoothing-predictor
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-exponential-smoothing-predictor-0.1.3/nebulous-exponential-smoothing-predictor-0.1.3.tgz
+    version: 0.1.3
   - apiVersion: v2
     appVersion: latest
     created: "2024-11-29T10:43:22.037144053Z"
@@ -354,6 +374,16 @@ entries:
   nebulous-lstm-predictor:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-04-24T09:01:46.962388831Z"
+    description: A Helm chart for Kubernetes
+    digest: 8fe719a1f9d50e8bd23aeac2f80ca098012e4c92060d6db4a4da4660e94a5ebb
+    name: nebulous-lstm-predictor
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-lstm-predictor-0.1.1/nebulous-lstm-predictor-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-09-11T07:17:03.337229573Z"
     description: A Helm chart for Kubernetes
     digest: 1de413fcfa734a4c292af2f83b2506108cc387ec51a85e42886019acf7b147b9
@@ -404,6 +434,16 @@ entries:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-0.1.5/nebulous-monitoring-0.1.5.tgz
     version: 0.1.5
   nebulous-monitoring-data-persistor:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-04-24T09:01:47.172592014Z"
+    description: A Helm chart for Kubernetes
+    digest: 5390d1b0fb99ed0253f1a599b2c2d992c192a8a973f5107c913509fd23e2f507
+    name: nebulous-monitoring-data-persistor
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-data-persistor-0.1.1/nebulous-monitoring-data-persistor-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: latest
     created: "2024-07-13T15:47:52.078584868Z"
@@ -795,6 +835,16 @@ entries:
   nebulous-slo-violation-detector:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-04-24T09:01:47.395957972Z"
+    description: A Helm chart for Kubernetes
+    digest: 98e956511db8fed0e7fe9106a84be98330c66ddc37b18146e36d5457e47528a4
+    name: nebulous-slo-violation-detector
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.1/nebulous-slo-violation-detector-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-07-13T15:47:52.753887054Z"
     description: A Helm chart for Kubernetes
     digest: 04f3036bc1e3b0c517137760ccff02d5d25a45320b3a05c0ca100435f68b7731
@@ -803,4 +853,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-14T14:30:33.866029181Z"
+generated: "2025-04-24T09:01:47.396091711Z"
