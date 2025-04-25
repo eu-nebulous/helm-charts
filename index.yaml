@@ -117,6 +117,16 @@ entries:
   nebulous-bqa-server:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-04-25T08:35:56.346508186Z"
+    description: A Helm chart for Kubernetes
+    digest: 5667c7be334d9a6ae9a48ecb5772bb8d031f4930fa05d52a80c4fe88bbec22cb
+    name: nebulous-bqa-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-bqa-server-0.1.1/nebulous-bqa-server-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-24T09:37:30.876316168Z"
     description: A Helm chart for Kubernetes
     digest: 7f3d74faef7b335c96a4761948980e46c84361dcf56cb6a18222a8131971d334
@@ -466,6 +476,16 @@ entries:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-data-persistor-0.1.0/nebulous-monitoring-data-persistor-0.1.0.tgz
     version: 0.1.0
   nebulous-ontology-server:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-25T08:35:56.462554467Z"
+    description: A Helm chart for Kubernetes
+    digest: 703a7f7910d4b387bfc8b5d1c525ec858bfcd547889bca7d9b3dd0f0d79b530d
+    name: nebulous-ontology-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-ontology-server-0.1.1/nebulous-ontology-server-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-04-24T09:37:30.996814192Z"
@@ -857,6 +877,16 @@ entries:
   nebulous-sla-generator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-04-25T08:35:56.599590321Z"
+    description: A Helm chart for Kubernetes
+    digest: 639543cc692fd7f0c9c00b7962e6916c6d54c4d3aecc3ae2225a99733fe95348
+    name: nebulous-sla-generator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-sla-generator-0.1.1/nebulous-sla-generator-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-24T09:37:31.126131255Z"
     description: A Helm chart for Kubernetes
     digest: 23e59b35babed0210c94193d6699cd54ca8f0586a76c7553e25881432c9203f3
@@ -886,4 +916,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-24T09:37:31.126285093Z"
+generated: "2025-04-25T08:35:56.599748818Z"
