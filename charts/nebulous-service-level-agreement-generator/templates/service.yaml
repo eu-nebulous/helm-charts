@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nebulous-service-level-agreement-generator.fullname" . }}
+  labels:
+    {{- include "nebulous-service-level-agreement-generator.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "nebulous-service-level-agreement-generator.selectorLabels" . | nindent 4 }}

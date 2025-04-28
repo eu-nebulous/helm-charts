@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nebulous-brokerage-quality-assurance-server.fullname" . }}
+  labels:
+    {{- include "nebulous-brokerage-quality-assurance-server.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "nebulous-brokerage-quality-assurance-server.selectorLabels" . | nindent 4 }}
