@@ -145,6 +145,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-bqa-server-0.1.0/nebulous-bqa-server-0.1.0.tgz
     version: 0.1.0
+  nebulous-brokerage-quality-assurance-server:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-28T12:39:48.93710801Z"
+    description: A Helm chart for Kubernetes
+    digest: 1ad4746da6730760131ae984f8ef0dd916e63cc72a7eafa83154a87a109705aa
+    name: nebulous-brokerage-quality-assurance-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-brokerage-quality-assurance-server-0.1.0/nebulous-brokerage-quality-assurance-server-0.1.0.tgz
+    version: 0.1.0
   nebulous-cloud-fog-service-broker:
   - apiVersion: v2
     appVersion: latest
@@ -884,6 +895,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-sal-0.1.0/nebulous-sal-0.1.0.tgz
     version: 0.1.0
+  nebulous-service-level-agreement-generator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-04-28T12:39:49.057033079Z"
+    description: A Helm chart for Kubernetes
+    digest: 89028f8541464d7e59619a929366a5bb80fc25e3ba20fd3f9644dada1da63348
+    name: nebulous-service-level-agreement-generator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-service-level-agreement-generator-0.1.0/nebulous-service-level-agreement-generator-0.1.0.tgz
+    version: 0.1.0
   nebulous-sla-generator:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -936,4 +958,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-28T10:57:56.598574424Z"
+generated: "2025-04-28T12:39:49.057187487Z"
