@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nebulous-activemq-app.fullname" . }}
+  labels:
+    {{- include "nebulous-activemq-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: 61616
+      nodePort: 30356
+      targetPort: activemq
+      protocol: TCP
+      name: activemq  
+  selector:
+    {{- include "nebulous-activemq-app.selectorLabels" . | nindent 4 }}
