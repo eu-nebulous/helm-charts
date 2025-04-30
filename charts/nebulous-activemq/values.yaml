@@ -90,3 +90,5 @@ brokerEnv:
   value: nebulous
 - name: ACTIVEMQ_USERNAME
   value: admin
+- name: APP_BROKER_PORT
+  value: 30356

@@ -38,9 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  guiPort: 8161
   activemqPort: 61616
-  amqpPort: 5672
 
 ingress:
   enabled: false
@@ -79,9 +77,15 @@ tolerations: []
 affinity: {}
 
 brokerEnv:
-- name: ACTIVEMQ_NAME
-  value: activemq
-- name: ACTIVEMQ_PASSWORD
-  value: nebulous
-- name: ACTIVEMQ_USERNAME
-  value: admin
+- name: ARTEMIS_USER
+  value: changeme
+- name: ARTEMIS_PASSWORD
+  value: changeme
+- name: ACTIVEMQ_ADMIN_PASSWORD
+  value: changeme
+- name: APPLICATION_ID
+  value: changeme
+- name: NEBULOUS_MESSAGE_BRIDGE_PASSWORD
+  value: changeme
+- name: NEBULOUS_CONTROL_PLANE_BROKER_ADDRESS
+  value: changeme
