@@ -81,7 +81,8 @@ tolerations: []
 
 affinity: {}
 
-
 env:
-  SPRING_EXN_USER: 'admin'
-  SPRING_EXN_PASSWORD: 'nebulous'
+  - name: SPRING_EXN_USER
+    value: "admin"
+  - name: SPRING_EXN_PASSWORD
+    value: "nebulous"
