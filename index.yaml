@@ -552,6 +552,16 @@ entries:
   nebulous-optimiser-utility-evaluator:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-04-30T09:44:22.946068819Z"
+    description: A Helm chart for Kubernetes
+    digest: a599a710bf05b6192f98fea79e397e5cdbc81e570e6ba76c767c90f4dd4dbb76
+    name: nebulous-optimiser-utility-evaluator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-optimiser-utility-evaluator-0.3.1/nebulous-optimiser-utility-evaluator-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-04-30T09:23:10.474613891Z"
     description: A Helm chart for Kubernetes
     digest: b397054a22d28953f917ac4f2167ed5af05f02866f2ca72ca20108809556e7dc
@@ -978,4 +988,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-30T09:23:10.47480597Z"
+generated: "2025-04-30T09:44:22.946233707Z"
