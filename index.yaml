@@ -96,6 +96,16 @@ entries:
   nebulous-activemq-app:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-05-05T08:41:49.011135774Z"
+    description: A Helm chart for Kubernetes
+    digest: 2fe02ec4bac1c0e8f981d472de19411e6ea0b1d28c76ae64afe2f85ed5505b33
+    name: nebulous-activemq-app
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-activemq-app-0.1.4/nebulous-activemq-app-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-05-05T08:12:04.394604957Z"
     description: A Helm chart for Kubernetes
     digest: 6f287ddbb099829aa2f94317a09f360eb3b605a35602f078be202c3dae937a6f
@@ -1039,4 +1049,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-05T08:12:04.394810192Z"
+generated: "2025-05-05T08:41:49.011312205Z"
