@@ -37,8 +37,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  activemqPort: 61616
+  activemQNodePort:
+    port: 30356
 
 ingress:
   enabled: false
