@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nebulous-influxdb-app.fullname" . }}
+  labels:
+    {{- include "nebulous-influxdb-app.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "nebulous-influxdb-app.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "nebulous-influxdb-app.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "nebulous-influxdb-app.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8086
+              protocol: TCP
+          env:
+            - name: INFLUXDB_HTTP_AUTH_ENABLED
+              value: "{{ .Values.config.httpAuthEnabled }}"
+            - name: DOCKER_INFLUXDB_INIT_MODE
+              value: "{{ .Values.influxdbSetup.DOCKER_INFLUXDB_INIT_MODE }}"
+            - name: DOCKER_INFLUXDB_INIT_USERNAME
+              value: "{{ .Values.influxdbSetup.DOCKER_INFLUXDB_INIT_USERNAME }}"
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              value: "{{ .Values.influxdbSetup.DOCKER_INFLUXDB_INIT_ORG }}"
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              value: "{{ .Values.influxdbSetup.DOCKER_INFLUXDB_INIT_BUCKET }}"
+            - name: DOCKER_INFLUXDB_INIT_RETENTION
+              value: "{{ .Values.influxdbSetup.DOCKER_INFLUXDB_INIT_RETENTION }}"
+            - name: DOCKER_INFLUXDB_INIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "nebulous-influxdb-app.fullname" . }}-secrets
+                  key: DOCKER_INFLUXDB_INIT_PASSWORD
+            - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "nebulous-influxdb-app.fullname" . }}-secrets
+                  key: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8086
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8086
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

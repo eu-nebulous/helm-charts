@@ -1,0 +1,104 @@
+# Default values for nebulous-influxdb-app.
+
+# Number of replicas
+replicaCount: 1
+
+# Image configurations
+image:
+  repository: "quay.io/nebulous/influxdb"
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# InfluxDB specific configurations
+config:
+  httpAuthEnabled: "true"
+  adminUser: "admin"
+
+# Service Account configurations
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# Pod configurations
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# Service settings
+service:
+  type: ClusterIP
+  port: 8086
+
+# Ingress configurations
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+# Resource allocation for pods
+resources:
+  # limits and requests for CPU and memory
+  limits:
+    cpu: "1000m"
+    memory: "2Gi"
+  requests:
+    cpu: "500m"
+    memory: "1Gi"
+
+# Autoscaling configurations
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Node selector, tolerations, and affinity settings
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+influxdbSetup:
+  DOCKER_INFLUXDB_INIT_MODE: "setup"
+  DOCKER_INFLUXDB_INIT_USERNAME: "my-user"
+  DOCKER_INFLUXDB_INIT_ORG: "my-org"
+  DOCKER_INFLUXDB_INIT_BUCKET: "my-bucket"
+  DOCKER_INFLUXDB_INIT_RETENTION: "1w"
+
+secrets:
+  DOCKER_INFLUXDB_INIT_PASSWORD: "my-password"
+  DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "my-super-secret-auth-token"
+
+influxdb:
+  storage: "1Gi"
