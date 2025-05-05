@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
     - port: 61616
-      nodePort: {{ .Values.activemQNodePort }}
+      nodePort: {{ .Values.service.activemQNodePort }}
       targetPort: activemq
       protocol: TCP
       name: activemq  
