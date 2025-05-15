@@ -588,6 +588,17 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-data-persistor-0.1.0/nebulous-monitoring-data-persistor-0.1.0.tgz
     version: 0.1.0
+  nebulous-monitoring-visualisation:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-05-15T14:54:28.233287639Z"
+    description: A Helm chart for Kubernetes
+    digest: 6235cfc9725b8d1dd1160a18c426f1618f57e179d40a483149ac401e5b5128e8
+    name: nebulous-monitoring-visualisation
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-visualisation-0.1.0/nebulous-monitoring-visualisation-0.1.0.tgz
+    version: 0.1.0
   nebulous-ontology-server:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -1080,4 +1091,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-05T13:06:15.226186092Z"
+generated: "2025-05-15T14:54:28.233427691Z"
