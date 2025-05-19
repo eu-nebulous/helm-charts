@@ -46,6 +46,10 @@ spec:
               value: "{{ .Values.application.env.exnRetryAttempts | toString }}"
             - name: SERVER_PORT
               value: "{{ .Values.application.env.serverPort | toString }}"
+            - name: INFLUX_USERNAME
+              value: "{{ .Values.application.env.influxUsername | toString }}"
+            - name: INFLUX_TOKEN
+              value: "{{ .Values.application.env.influxToken | toString }}"
           ports:
             - name: http
               containerPort: 3333

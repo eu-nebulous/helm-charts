@@ -89,3 +89,5 @@ application:
     exnPassword: "admin"
     exnRetryAttempts: 5
     serverPort: 3333
+    influxUsername: "my-user"
+    influxToken: "my-super-secret-auth-token"
