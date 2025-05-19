@@ -707,6 +707,16 @@ entries:
   nebulous-prediction-orchestrator:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-05-19T23:35:46.230132702Z"
+    description: A Helm chart for Kubernetes
+    digest: d2deeda19d2495fa8040571d756a471c58604054433694cd4b6248e92f4a4f32
+    name: nebulous-prediction-orchestrator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-prediction-orchestrator-0.1.1/nebulous-prediction-orchestrator-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-07-13T15:47:52.537601721Z"
     description: A Helm chart for Kubernetes
     digest: 355e578b27d1a0f4753b4178a07a2d532390b53b404cf89a7d70bd97f3b1c2d9
@@ -1091,4 +1101,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-15T14:54:28.233427691Z"
+generated: "2025-05-19T23:35:46.230259589Z"
