@@ -52,8 +52,15 @@ spec:
                 - /home/r_predictions/is_alive.txt
           env:
             {{- toYaml .Values.env | nindent 12 }}
+          volumeMounts:
+            - name: exsmoothing-data
+              mountPath: /home/r_predictions/control_directory
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: exsmoothing-data
+          persistentVolumeClaim:
+            claimName: {{ include "nebulous-exponential-smoothing-predictor.fullname" . }}-data            
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -66,3 +73,17 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "nebulous-exponential-smoothing-predictor.fullname" . }}-data
+  labels:
+    {{- include "nebulous-exponential-smoothing-predictor.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+{{ end }}
