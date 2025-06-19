@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: robertsanfeliu/sal
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "dev"
 
 imagePullSecrets: []
