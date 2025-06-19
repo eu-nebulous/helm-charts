@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: activeeon/sal
+  repository: robertsanfeliu/sal
   pullPolicy: IfNotPresent
   tag: "dev"
 
