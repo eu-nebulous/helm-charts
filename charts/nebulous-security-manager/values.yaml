@@ -131,5 +131,4 @@ roleBinding:
 
 configMap:
   name: k3s-kubeconfig
-  k3sConfig: |
-    # Example K3S config content
+  k3sConfig: ""

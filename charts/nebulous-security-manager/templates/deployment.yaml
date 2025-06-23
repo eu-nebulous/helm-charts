@@ -53,7 +53,7 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
           volumeMounts:
-            - mountPath: /etc/rancher/k3s/k3s.yaml
+            - mountPath: /etc/rancher/k3s
               name: kubeconfig-volume
               subPath: k3s-copy.yaml
       imagePullSecrets:
