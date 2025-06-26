@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ .Values.configMap.name }}
 data:
-  k3s-copy.yaml: |
+  k3s.yaml: |
     {{ .Values.configMap.k3sConfig | default "" | nindent 4 }}
