@@ -1121,4 +1121,15 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-19T22:00:33.559813332Z"
+  security-manager:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-26T12:24:39.679104213Z"
+    description: A Helm chart for Kubernetes
+    digest: 71ca721a2e27c5e97ff2f3e622109b377ab367af51ea170e46309898e32a70a3
+    name: security-manager
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-06-26T12:24:39.679272648Z"
