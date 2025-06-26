@@ -55,7 +55,7 @@ spec:
           volumeMounts:
             - mountPath: /etc/rancher/k3s
               name: kubeconfig-volume
-              subPath: k3s-copy.yaml
+              #subPath: k3s-copy.yaml
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
       volumes:
