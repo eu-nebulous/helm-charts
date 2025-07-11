@@ -17,6 +17,9 @@ subjects:
   - kind: ServiceAccount
     {{ template "argo-workflows.controllerServiceAccountName" . }}
     namespace: {{ include "argo-workflows.namespace" . | quote }}
+  - kind: ServiceAccount
+    name: default
+    namespace: {{ include "argo-workflows.namespace" . | quote }}
 roleRef:
   kind: Role
   name: {{ template "argo-workflows.controller.fullname" . }}
