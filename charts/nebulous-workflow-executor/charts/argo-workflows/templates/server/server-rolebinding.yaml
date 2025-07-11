@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: RoleBinding
 metadata:
-  name: argo-workflows-server
+  name: {{ template "argo-workflows.serverServiceAccountName" . }}
   namespace: {{ include "argo-workflows.namespace" . | quote }}
   labels:
     {{- include "argo-workflows.labels" (dict "context" . "component" .Values.server.name "name" .Values.server.name) | nindent 4 }}
