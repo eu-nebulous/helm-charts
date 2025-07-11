@@ -117,8 +117,14 @@ argo-workflows:
       name: argo
     rbac:
       create: true
+      serviceAccounts:
+        - name: default
+          namespace: argo
+        - name: argo
+          namespace: argo
   controller:
-    workflowNamespaces: ["argo"]
+    workflowNamespaces: 
+      - argo
     metricsConfig:
       enabled: true
     telemetryConfig:
