@@ -110,6 +110,7 @@ argo-workflows:
   crds:
     install: true
     keep: false
+  singleNamespace: true
   workflow:
     serviceAccount:
       create: true
