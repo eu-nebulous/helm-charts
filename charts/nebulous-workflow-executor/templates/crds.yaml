@@ -28,7 +28,7 @@ spec:
                 hugepages-2Mi:
                   type: string
                 replicas:
-                  type: int
+                  type: integer
   scope: Cluster
   names:
     plural: workflowworkers
