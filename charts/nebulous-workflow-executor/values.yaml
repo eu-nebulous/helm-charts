@@ -12,6 +12,12 @@ image:
 # nameOverride: ""
 # fullnameOverride: ""
 
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: "workflow-executor"
+
 # podAnnotations: {}
 # podLabels: {}
 
