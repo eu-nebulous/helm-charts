@@ -10,6 +10,12 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: http
       protocol: TCP
-      name: http
+      name: workflow-port
+  {{- if .Values.metrics.enabled }}
+    - port: {{ .Values.metrics.port }}
+      targetPort: {{ .Values.metrics.targetPort }}
+      protocol: TCP
+      name: metrics-port
+  {{- end }}
   selector:
     {{- include "nebulous-workflow-executor.selectorLabels" . | nindent 4 }}
