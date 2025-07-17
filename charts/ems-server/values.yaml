@@ -142,6 +142,9 @@ env:
   - name: EMS_IP_SETTING
     value: 'DEFAULT_IP'
 
+  - name: TRANSLATOR_EXTENSION_MODEL
+    value: 'extension.yml'
+
   - name: K8S_WATCHER_ENABLED
     value: 'true'
   - name: EMS_LOG_REQUESTS
