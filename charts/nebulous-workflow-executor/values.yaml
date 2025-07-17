@@ -1,12 +1,11 @@
 image:
   repository: quay.io/nebulous/workflow-executor
   pullPolicy: Always
-  tag: "r1-90589d4f5caca55b238f0dedf683edad37c89863 "
+  tag: "r1-90589d4f5caca55b238f0dedf683edad37c89863"
 
 serviceAccount:
   create: true
   automount: true
-  annotations: {}
   name: workflow-executor
 
 env:
@@ -57,7 +56,7 @@ argo-workflows:
   controller:
     image:
       tag: "v3.6.2"
-    workflowNamespaces: 
+    workflowNamespaces:
       - argo
     metricsConfig:
       enabled: true
