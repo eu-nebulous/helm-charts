@@ -141,8 +141,6 @@ env:
     value: '-'
   - name: EMS_IP_SETTING
     value: 'DEFAULT_IP'
-  #- name: LOGGING_LEVEL_EU_NEBULOUS_EMS_TRANSLATE
-  #  value: 'TRACE'
 
   - name: TRANSLATOR_EXTENSION_MODEL
     value: 'extension.yml'
