@@ -29,6 +29,16 @@ env:
   - name: TARGET_PORT
     value: "2746"
 
+tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/unschedulable
+    operator: Exists
+  - effect: NoSchedule
+    operator: Exists
+
+nodeSelector:
+  node-role.kubernetes.io/control-plane: ""
+
 # podAnnotations: {}
 # podLabels: {}
 
