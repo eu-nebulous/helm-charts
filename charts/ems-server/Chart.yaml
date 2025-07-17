@@ -3,4 +3,4 @@ appVersion: 7.0.0-SNAPSHOT
 description: EMS server Helm chart for Kubernetes
 name: ems-server
 type: application
-version: 0.1.2
+version: 0.1.3
