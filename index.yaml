@@ -1142,6 +1142,22 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-slo-violation-detector-0.1.0/nebulous-slo-violation-detector-0.1.0.tgz
     version: 0.1.0
+  nebulous-workflow-executor:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-07-21T08:25:50.703683161Z"
+    dependencies:
+    - condition: argo-workflows.enabled
+      name: argo-workflows
+      repository: ""
+      version: 0.45.4
+    description: A Helm chart for Kubernetes
+    digest: 420d32a8b6a3999ec3ee107dbd0f4e8051e3fc9d785532128c8a483e386ab50d
+    name: nebulous-workflow-executor
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-workflow-executor-1.0.0/nebulous-workflow-executor-1.0.0.tgz
+    version: 1.0.0
   security-manager:
   - apiVersion: v2
     appVersion: latest
@@ -1153,4 +1169,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-17T08:21:32.987182439Z"
+generated: "2025-07-21T08:25:50.70384213Z"
