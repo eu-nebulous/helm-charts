@@ -1,0 +1,88 @@
+image:
+  repository: quay.io/nebulous/workflow-executor
+  pullPolicy: Always
+  tag: "r1-90589d4f5caca55b238f0dedf683edad37c89863"
+
+serviceAccount:
+  create: true
+  automount: true
+  name: workflow-executor
+
+env:
+  - name: PROXY_ADDRESS
+    value: "0.0.0.0"
+  - name: PROXY_PORT
+    value: "8080"
+  - name: TARGET_SERVER
+    value: "http://nebulous-workflow-executor-argo-workflows-server.argo.svc.cluster.local"
+  - name: TARGET_PORT
+    value: "2746"
+
+tolerations:
+  - effect: NoSchedule
+    key: node.kubernetes.io/unschedulable
+    operator: Exists
+  - effect: NoSchedule
+    operator: Exists
+
+nodeSelector:
+  node-role.kubernetes.io/control-plane: ""
+
+service:
+  type: ClusterIP
+  port: 8080
+
+metrics:
+  port: 9999
+  targetPort: 9999
+  enabled: true
+
+argo-workflows:
+  crds:
+    install: true
+    keep: false
+  singleNamespace: true
+  workflow:
+    serviceAccount:
+      create: true
+      name: argo
+    rbac:
+      create: true
+      serviceAccounts:
+        - name: default
+          namespace: argo
+        - name: argo
+          namespace: argo
+  controller:
+    image:
+      tag: "v3.6.2"
+    workflowNamespaces:
+      - argo
+    metricsConfig:
+      enabled: true
+    telemetryConfig:
+      enabled: true
+    serviceMonitor:
+      enabled: true
+    tolerations:
+      - effect: NoSchedule
+        key: node.kubernetes.io/unschedulable
+        operator: Exists
+      - effect: NoSchedule
+        operator: Exists
+    priorityClassName: system-node-critical
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: ""
+  server:
+    image:
+      tag: "v3.6.2"
+    authModes: ["server"]
+    tolerations:
+      - effect: NoSchedule
+        key: node.kubernetes.io/unschedulable
+        operator: Exists
+      - effect: NoSchedule
+        operator: Exists
+    priorityClassName: system-node-critical
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: ""

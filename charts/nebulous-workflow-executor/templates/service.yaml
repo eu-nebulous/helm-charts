@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nebulous-workflow-executor.fullname" . }}
+  labels:
+    {{- include "nebulous-workflow-executor.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: TCP
+      name: workflow-port
+  {{- if .Values.metrics.enabled }}
+    - port: {{ .Values.metrics.port }}
+      targetPort: {{ .Values.metrics.targetPort }}
+      protocol: TCP
+      name: metrics-port
+  {{- end }}
+  selector:
+    {{- include "nebulous-workflow-executor.selectorLabels" . | nindent 4 }}

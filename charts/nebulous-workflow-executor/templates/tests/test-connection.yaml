@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "nebulous-workflow-executor.fullname" . }}-test-connection"
+  labels:
+    {{- include "nebulous-workflow-executor.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "nebulous-workflow-executor.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

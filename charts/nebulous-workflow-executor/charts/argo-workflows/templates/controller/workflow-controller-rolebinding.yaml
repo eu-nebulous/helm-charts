@@ -1,0 +1,27 @@
+{{- if and .Values.controller.enabled .Values.controller.serviceAccount.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ template "argo-workflows.controllerServiceAccountName" . }}
+  namespace: {{ include "argo-workflows.namespace" . | quote }}
+  labels:
+    {{- include "argo-workflows.labels" (dict "context" . "component" .Values.controller.name "name" .Values.controller.name) | nindent 4 }}
+  {{- with .Values.controller.serviceAccount.labels  }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.controller.serviceAccount.annotations  }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+subjects:
+  - kind: ServiceAccount
+    {{ template "argo-workflows.controllerServiceAccountName" . }}
+    namespace: {{ include "argo-workflows.namespace" . | quote }}
+  - kind: ServiceAccount
+    name: default
+    namespace: {{ include "argo-workflows.namespace" . | quote }}
+roleRef:
+  kind: Role
+  name: {{ template "argo-workflows.controller.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end -}}
