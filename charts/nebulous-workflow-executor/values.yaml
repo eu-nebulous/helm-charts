@@ -1,7 +1,7 @@
 image:
   repository: quay.io/nebulous/workflow-executor
   pullPolicy: Always
-  tag: "r1-90589d4f5caca55b238f0dedf683edad37c89863"
+  tag: "r1-15f1359427af7efa521fedcec70d5d5f1e071e9a-20250725113229"
 
 serviceAccount:
   create: true
