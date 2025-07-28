@@ -26,4 +26,4 @@ spec:
     {{- end }}
     {{- end }}
   selector:
-    {{- include "nebulous-monitoring.selectorLabels" . | nindent 4 }}-public
+    {{- include "nebulous-monitoring.selectorLabels" . | nindent 4 }}
