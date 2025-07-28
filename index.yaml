@@ -539,6 +539,16 @@ entries:
   nebulous-monitoring:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-07-28T14:42:53.538350107Z"
+    description: EMS server Helm chart for Kubernetes
+    digest: 66de058805a5f561fa2c5d54ef577fe409d32323478f6a19211a96d8d583b2d1
+    name: nebulous-monitoring
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-monitoring-0.4.1/nebulous-monitoring-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-04-10T09:49:01.432770449Z"
     description: EMS server Helm chart for Kubernetes
     digest: d157dc50e72be27428fe08e79fa1639a5b2da32288c42a94e92293057e06643a
@@ -1184,4 +1194,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-25T11:42:35.56432396Z"
+generated: "2025-07-28T14:42:53.538553196Z"
