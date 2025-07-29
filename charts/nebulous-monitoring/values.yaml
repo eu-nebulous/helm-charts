@@ -111,7 +111,7 @@ ports:
     protocol: TCP
     public: false
   - name: baguette
-    containerPort: 2222
+    containerPort: 32222
     protocol: TCP
     public: true
     nodePort: 32222
