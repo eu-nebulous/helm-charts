@@ -195,7 +195,7 @@ env:
   BAGUETTE_SERVER_ADDRESS: "158.39.200.177"
   BAGUETTE_SERVER_PORT: "32222"
   # BAGUETTE_CLIENT_INSTALL_INSTRUCTIONS_LINUX: "file:${EMS_CONFIG_DIR}/baguette-client-install/helm/app-detection.yml, file:${EMS_CONFIG_DIR}/baguette-client-install/helm/epm-deploy.yml, file:${EMS_CONFIG_DIR}/baguette-client-install/helm/netdata-deploy.yml"
-  BAGUETTE_CLIENT_INSTALL_INSTALLATION_CONTEXT_PROCESSOR_PLUGINS: "eu.nebulous.ems.plugins.NebulousInstallationContextProcessorPlugin"
+  BAGUETTE_CLIENT_INSTALL_INSTALLATION_CONTEXT_PROCESSOR_PLUGINS: "eu.nebulous.ems.plugins.NebulousInstallationContextProcessorPlugin, gr.iccs.imu.ems.baguette.client.install.plugin.CollectorConfigurationsProcessorPlugin"
 
   #
   # =====  EMS server K8sClientInstaller configuration  =====
