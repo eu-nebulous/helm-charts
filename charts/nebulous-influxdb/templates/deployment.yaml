@@ -77,6 +77,12 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /ping
+              port: 8086
+            failureThreshold: 6
+            periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
