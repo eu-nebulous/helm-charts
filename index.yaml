@@ -476,6 +476,16 @@ entries:
   nebulous-influxdb:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-08-06T14:55:56.877290765Z"
+    description: A Helm chart for Kubernetes
+    digest: d58a12cd461914e7d28ea9d95dde4aec004d95c960882ae9b3d07b6135d690eb
+    name: nebulous-influxdb
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-influxdb-0.2.2/nebulous-influxdb-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-08-01T12:44:18.834341807Z"
     description: A Helm chart for Kubernetes
     digest: 198bbba92db1f99bb41b4565d100e25438cadce190d30d57a960bc4c27051336
@@ -1244,4 +1254,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-01T12:44:18.83455643Z"
+generated: "2025-08-06T14:55:56.877505706Z"
