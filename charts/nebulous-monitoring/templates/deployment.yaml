@@ -60,6 +60,13 @@ spec:
             - name: {{ $key }}
               value: {{ $val | quote }}
             {{- end }}
+
+            - name: EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY
+              value: "{{ .Values.client.image.repository }}"
+            - name: EMS_CLIENT_DAEMONSET_IMAGE_TAG
+              value: "{{ .Values.client.image.tag }}"
+            - name: EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY
+              value: "{{ .Values.client.image.pullPolicy }}"
           ports:
             {{- range .Values.ports }}
             - name: {{ .name }}

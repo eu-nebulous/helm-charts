@@ -20,6 +20,12 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+client:
+  image:
+    repository: "quay.io/nebulous/monitoring"
+    pullPolicy: Always
+    tag: ""
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -185,6 +191,7 @@ env:
   # BROKERCEP_ADDITIONAL_BROKER_CREDENTIALS: "ENC(axeJUxNHajYfBffUwvuT3kwTgLTpRliDMz/ZQ9hROZ3BNOv0Idw72NJsawzIZRuZ)"
   BROKERCEP_EVENT_RECORDER_ENABLED: "false"
   BROKERCEP_EVENT_RECORDER_FILTER_MODE: "ALL"
+  BROKERCEP_EVENT_CACHE_ENABLED: "false"
 
   # =====  Baguette Server settings  =====
   BAGUETTE_SERVER_CREDENTIALS: '{ "aa":"xx" }'                                              # ++++++++++++++++ ${P_BAGUETTE_SERVER_CREDENTIALS:-{}}
@@ -206,9 +213,9 @@ env:
   EMS_CLIENT_CONFIG_MAP_NAME: "ems-client-configmap"
   # EMS_CLIENT_DAEMONSET_SPECIFICATION_FILE: "/ems-client-daemonset.yaml"
   EMS_CLIENT_DAEMONSET_NAME: "ems-client-daemonset"
-  EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY: "registry.gitlab.com/nebulous-project/ems-main/ems-client"
-  EMS_CLIENT_DAEMONSET_IMAGE_TAG: "latest"
-  EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY: "Always"
+#  EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY: "quay.io/nebulous/monitoring"
+#  EMS_CLIENT_DAEMONSET_IMAGE_TAG: "ems-client-main"
+#  EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY: "Always"
 
   # =====  EMS clients - Security and Authentication settings  =====
   EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS: "aaa/111, bbb/222"
