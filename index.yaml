@@ -34,6 +34,16 @@ entries:
   ems-server:
   - apiVersion: v2
     appVersion: 7.0.0-SNAPSHOT
+    created: "2025-09-17T12:10:29.30138263Z"
+    description: EMS server Helm chart for Kubernetes
+    digest: c4aba435e3584065c9b0440e9e088b8e44243a1c93c596d4a278cbf88bfe20a5
+    name: ems-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/ems-server-0.1.4/ems-server-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 7.0.0-SNAPSHOT
     created: "2025-07-17T08:21:32.986999715Z"
     description: EMS server Helm chart for Kubernetes
     digest: 9b597116daed4111cf8eff56026342073780a693455cbd6c29e06846e77a1f1f
@@ -1264,4 +1274,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-17T09:31:57.770637414Z"
+generated: "2025-09-17T12:10:29.30160427Z"
