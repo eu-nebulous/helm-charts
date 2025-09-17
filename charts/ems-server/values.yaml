@@ -14,11 +14,17 @@
 replicaCount: 1
 
 image:
-  repository: "registry.gitlab.com/nebulous-project/ems-main/ems-server"
+  repository: "quay.io/nebulous/monitoring"
 #  pullPolicy: IfNotPresent
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: &image_tag "latest"
+  tag: "main"
+
+client:
+  image:
+    repository: "quay.io/nebulous/monitoring"
+    pullPolicy: Always
+    tag: "ems-client-main"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -218,13 +224,13 @@ env:
   #    value: "/ems-client-daemonset.yaml"
   - name: EMS_CLIENT_DAEMONSET_NAME
     value: "ems-client-daemonset"
-  - name: EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY
-    value: "registry.gitlab.com/nebulous-project/ems-main/ems-client"
-  - name: EMS_CLIENT_DAEMONSET_IMAGE_TAG
+#  - name: EMS_CLIENT_DAEMONSET_IMAGE_REPOSITORY
+#    value: "registry.gitlab.com/nebulous-project/ems-main/ems-client"
+#  - name: EMS_CLIENT_DAEMONSET_IMAGE_TAG
 #    value: "latest"
-    value: *image_tag
-  - name: EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY
-    value: "Always"
+#    value: *image_tag
+#  - name: EMS_CLIENT_DAEMONSET_IMAGE_PULL_POLICY
+#    value: "Always"
 
   # =====  EMS clients - Security and Authentication settings  =====
   - name: EMS_CLIENT_ADDITIONAL_BROKER_CREDENTIALS
