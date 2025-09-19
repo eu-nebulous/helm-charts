@@ -204,6 +204,8 @@ env:
     value: 'false'
   - name: BROKERCEP_EVENT_RECORDER_FILTER_MODE
     value: 'ALL'
+  - name: BROKERCEP_EVENT_CACHE_ENABLED
+    value: 'false'
 
   # =====  Baguette Server settings  =====
   - name: BAGUETTE_SERVER_CREDENTIALS
