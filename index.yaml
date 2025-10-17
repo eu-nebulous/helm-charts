@@ -1245,6 +1245,16 @@ entries:
   nebulous-smart-contract-encapsulator:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-10-17T13:41:29.932615489Z"
+    description: A Helm chart for Kubernetes
+    digest: eda42c0bc7ec4aab7a46c7dcd81165162c01f3b901128dc343dc0c6bdd9e7ff4
+    name: nebulous-smart-contract-encapsulator
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-smart-contract-encapsulator-0.1.1/nebulous-smart-contract-encapsulator-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-10-16T19:19:02.453922616Z"
     description: A Helm chart for Kubernetes
     digest: aa6a1769302a23f76783aa82b1d7054474faac738df622d97a7972644c8cfc35
@@ -1295,4 +1305,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-16T19:19:02.454140251Z"
+generated: "2025-10-17T13:41:29.932815713Z"
