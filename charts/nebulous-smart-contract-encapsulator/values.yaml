@@ -66,3 +66,9 @@ activemq:
   port: 5672
   user: admin
   password: nebulous
+
+env: []
+
+volumes: []
+
+volumeMounts: []
