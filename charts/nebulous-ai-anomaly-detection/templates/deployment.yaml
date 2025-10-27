@@ -47,10 +47,13 @@ spec:
               command:
                 - ls
                 - /home
-          env:
-            {{- toYaml .Values.env | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            {{- range $key, $val := .Values.application.env }}
+            - name: {{ $key | upper }}
+              value: {{ $val | quote }}
+            {{- end }}            
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
