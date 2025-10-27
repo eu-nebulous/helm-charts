@@ -197,6 +197,16 @@ entries:
   nebulous-ai-anomaly-detection:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-10-27T14:19:05.899966008Z"
+    description: A Helm chart for Kubernetes
+    digest: 370ef929b355d586995968060a00b964ee9f773fa20a293745cef6420723642e
+    name: nebulous-ai-anomaly-detection
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-ai-anomaly-detection-0.1.2/nebulous-ai-anomaly-detection-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-04-24T09:01:46.542677464Z"
     description: A Helm chart for Kubernetes
     digest: c572948f44afb2b942a3ea2b25fb48cb21e55a5930eee7c9cda43828bc94bbbf
@@ -1305,4 +1315,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-17T13:41:29.932815713Z"
+generated: "2025-10-27T14:19:05.900124074Z"
