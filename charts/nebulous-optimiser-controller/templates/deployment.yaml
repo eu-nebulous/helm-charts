@@ -46,6 +46,8 @@ spec:
               value: "{{ .Values.activemq.ACTIVEMQ_PORT }}"
             - name: ACTIVEMQ_USER
               value: "{{ .Values.activemq.ACTIVEMQ_USER }}"
+            - name: APP_NEBULOUS_SCRIPTS_BRANCH
+              value: "{{ .Values.activemq.APP_NEBULOUS_SCRIPTS_BRANCH | default "main" }}"              
             - name: ACTIVEMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
