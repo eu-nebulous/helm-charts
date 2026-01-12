@@ -258,6 +258,16 @@ entries:
     version: 0.1.0
   nebulous-brokerage-quality-assurance-server:
   - apiVersion: v2
+    appVersion: 1.17.1
+    created: "2026-01-12T13:42:09.403517422Z"
+    description: A Helm chart for Kubernetes
+    digest: bcdb15b6693c87c837238ebb40730d755806a302bb3a310c9d7b0293d81a53a2
+    name: nebulous-brokerage-quality-assurance-server
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-brokerage-quality-assurance-server-0.1.3/nebulous-brokerage-quality-assurance-server-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2026-01-12T13:37:02.604944094Z"
     description: A Helm chart for Kubernetes
@@ -1345,4 +1355,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-12T13:37:02.605152382Z"
+generated: "2026-01-12T13:42:09.403728825Z"
