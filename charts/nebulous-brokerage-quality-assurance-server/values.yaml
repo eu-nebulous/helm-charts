@@ -121,3 +121,13 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:
+- name: BROKER_URL
+  value: "nebulous-activemq"
+- name: BROKER_PORT
+  value: "5672"
+- name: BROKER_USERNAME
+  value: "admin"
+- name: BROKER_PASSWORD
+  value: "nebulous"
