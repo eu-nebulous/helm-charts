@@ -783,6 +783,16 @@ entries:
   nebulous-optimiser-controller:
   - apiVersion: v2
     appVersion: latest
+    created: "2026-01-13T10:32:58.614344112Z"
+    description: A Helm chart for Kubernetes
+    digest: 3aef78758e04f709bd44ebbf87d7e45f9c376159c1b56e21d03bd52c784c9ee3
+    name: nebulous-optimiser-controller
+    type: application
+    urls:
+    - https://github.com/eu-nebulous/helm-charts/releases/download/nebulous-optimiser-controller-0.1.4/nebulous-optimiser-controller-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: latest
     created: "2026-01-13T10:07:22.843709183Z"
     description: A Helm chart for Kubernetes
     digest: 2a97e572606974bd9e192e7e477d0d1849d1da2810e8a1a066851fd86071db93
@@ -1395,4 +1405,4 @@ entries:
     urls:
     - https://github.com/eu-nebulous/helm-charts/releases/download/security-manager-0.1.0/security-manager-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-13T10:07:22.843912443Z"
+generated: "2026-01-13T10:32:58.614558973Z"
