@@ -86,11 +86,11 @@ activemq:
   ACTIVEMQ_HOST: nebulous-activemq
   ACTIVEMQ_PORT: 5672
   ACTIVEMQ_USER: admin
+  ACTIVEMQ_PASSWORD: ""
 
 activemqSecret:
   secretName: "activemq-password"
   secretKey: "ACTIVEMQ_PASSWORD"
-  keyValue: "YWN0aXZlbXFwYXNzd29yZA=="
 
 amplLicense:
   secretName: "ampl-license"
