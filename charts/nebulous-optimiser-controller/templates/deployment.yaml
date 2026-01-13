@@ -57,9 +57,15 @@ spec:
               value: "{{ .Values.app.ACTIVEMQ_HOST }}"
             - name: APP_ACTIVEMQ_PORT
               value: "{{ .Values.app.ACTIVEMQ_PORT }}"
-            - name: ONM_IP
-              value: "{{ .Values.app.ONM_IP }}"
-            - name: ONM_URL
+            - name: PUBLIC_ACTIVEMQ_HOST
+              value: "{{ .Values.activemq.PUBLIC_ACTIVEMQ_HOST }}"
+            - name: PUBLIC_ACTIVEMQ_PORT
+              value: "{{ .Values.activemq.PUBLIC_ACTIVEMQ_PORT }}"
+            - name: ACTIVEMQ_STATIC_APP_CLIENT_PASSWORD
+              value: "{{ .Values.activemq.ACTIVEMQ_STATIC_APP_CLIENT_PASSWORD }}"
+            - name: ACTIVEMQ_STATIC_APP_CLIENT_USER
+              value: "{{ .Values.activemq.ACTIVEMQ_STATIC_APP_CLIENT_USER }}"
+              - name: ONM_URL
               value: "{{ .Values.app.ONM_URL }}"
           # livenessProbe:
           #   httpGet:
