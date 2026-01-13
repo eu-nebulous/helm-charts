@@ -88,14 +88,7 @@ activemq:
   ACTIVEMQ_USER: admin
   ACTIVEMQ_PASSWORD: ""
 
-activemqSecret:
-  secretName: "activemq-password"
-  secretKey: "ACTIVEMQ_PASSWORD"
-
-amplLicense:
-  secretName: "ampl-license"
-  secretKey: "AMPL_LICENSE"
-  keyValue: ""
+AMPL_LICENSE: ""
 
 application:
   id: "dummy-app"
