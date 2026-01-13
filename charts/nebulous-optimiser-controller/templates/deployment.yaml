@@ -65,7 +65,7 @@ spec:
               value: "{{ .Values.activemq.ACTIVEMQ_STATIC_APP_CLIENT_PASSWORD | default "" }}"
             - name: ACTIVEMQ_STATIC_APP_CLIENT_USER
               value: "{{ .Values.activemq.ACTIVEMQ_STATIC_APP_CLIENT_USER | default ""}}"
-              - name: ONM_URL
+            - name: ONM_URL
               value: "{{ .Values.app.ONM_URL }}"
           # livenessProbe:
           #   httpGet:
