@@ -42,7 +42,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - stat /home/r_predictions/is_alive.txt && rm /home/r_predictions/is_alive.txt
+                - stat /home/r_predictions/control_directory/is_alive.txt && rm /home/r_predictions/control_directory/is_alive.txt
             initialDelaySeconds: 300
             periodSeconds: 60 
           readinessProbe:
