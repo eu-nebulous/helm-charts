@@ -88,6 +88,10 @@ nodeSelector: {}
 
 tolerations: []
 
+service:
+  type: ClusterIP
+  influxdbNodePort: 30357
+
 affinity: {}
 influxdbSetup:
   DOCKER_INFLUXDB_INIT_MODE: "setup"
